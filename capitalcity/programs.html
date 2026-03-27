@@ -26,12 +26,6 @@
           </div>
           <div class="nav-item">
             <a href="programs.html">Programs</a>
-            <div class="dropdown">
-              <a href="programs.html#emergency">Emergency Services</a>
-              <a href="programs.html#recovery">Recovery Programs</a>
-              <a href="programs/medical-clinic.html">Medical Clinic</a>
-              <a href="programs/learning-center.html">Learning Center</a>
-            </div>
           </div>
           <div class="nav-item">
             <a href="get-involved.html">Get Involved</a>
@@ -39,7 +33,8 @@
               <a href="get-involved.html#volunteer">Volunteer</a>
               <a href="get-involved.html#events">Events</a>
               <a href="get-involved.html#pray">Pray</a>
-              <a href="get-involved.html#careers">Careers</a>
+              <a href="get-involved.html#subscribe">Subscribe</a>
+              <a href="get-involved.html#donate-goods">Donate Goods</a>
             </div>
           </div>
         </div>
@@ -50,7 +45,7 @@
           <div class="nav-item">
             <a href="give.html">Ways to Give</a>
           </div>
-          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Give</a>
+          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Donate Now</a>
         </div>
       </nav>
     </div>
@@ -58,7 +53,8 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section-with-note">
+      <button class="info-btn" onclick="openNote('page-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <h1>A Complete Pathway to Independence</h1>
         <p>From the first meal to stable housing, we walk with people through every step of their journey from crisis to transformation.</p>
@@ -207,8 +203,7 @@
           <ul>
             <li><a href="programs.html#emergency">Emergency Services</a></li>
             <li><a href="programs.html#recovery">Recovery Programs</a></li>
-            <li><a href="programs/medical-clinic.html">Medical Clinic</a></li>
-            <li><a href="programs/learning-center.html">Learning Center</a></li>
+            <li><a href="programs.html#support">Support Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -217,7 +212,8 @@
             <li><a href="get-involved.html#volunteer">Volunteer</a></li>
             <li><a href="get-involved.html#events">Events</a></li>
             <li><a href="get-involved.html#pray">Pray</a></li>
-            <li><a href="get-involved.html#careers">Careers</a></li>
+            <li><a href="get-involved.html#subscribe">Subscribe</a></li>
+            <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -241,6 +237,59 @@
       </div>
     </div>
   </footer>
+
+  <!-- Strategic Note Modal -->
+  <div id="page-note" class="note-modal-overlay" onclick="closeNote(event, 'page-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'page-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Programs Page Design</h3>
+        <p><strong>The goal:</strong> Show donors and supporters the full scope of CCRM's work in one view, reinforcing the "complete pathway from crisis to independence" message.</p>
+        <p><strong>How this page works:</strong></p>
+        <ol>
+          <li><strong>Hero establishes the journey frame.</strong> "A Complete Pathway to Independence" immediately signals this isn't just a soup kitchen—it's comprehensive care from first meal to stable housing.</li>
+          <li><strong>"More Than Emergency Relief" addresses the perception gap.</strong> Most people only know CCRM provides meals and shelter. This section directly confronts that misconception and expands their understanding.</li>
+          <li><strong>Three service categories create clarity.</strong> Rather than listing 10+ programs, we group them into Emergency Services, Recovery Programs, and Support Services. Visitors grasp the structure quickly, then can drill into details.</li>
+          <li><strong>Each section links to individual program pages.</strong> The landing page is the overview; individual pages provide depth. This keeps the landing page scannable while preserving detailed content.</li>
+          <li><strong>CTA reinforces donor connection.</strong> "Every Program is Free. Every Gift Makes It Possible" ties the comprehensive care story back to donor support.</li>
+        </ol>
+        <p><strong>Who this page is for:</strong> Primarily donors and supporters who want to understand what CCRM does. People seeking help should use the Get Help page, which prioritizes immediate needs and action.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openNote(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNote(event, id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.note-modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- Mobile Help Bar -->
+  <div class="mobile-help-bar">
+    <a href="tel:5184620459">
+      <div class="help-text">
+        <strong>Need Help?</strong>
+        (518) 462-0459
+      </div>
+      <span class="help-cta">Call Now</span>
+    </a>
+  </div>
 
 </body>
 </html>

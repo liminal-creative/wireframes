@@ -10,6 +10,8 @@
 html {
   font-size: 16px;
   line-height: 1.6;
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -230,6 +232,24 @@ section.alt {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
+}
+
+.card-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 900px) {
+  .card-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid-3 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .card {
@@ -625,5 +645,237 @@ section.alt {
   .footer-bottom {
     flex-direction: column;
     text-align: center;
+  }
+}
+
+/* Strategic Notes - Info Icon & Modal */
+.section-with-note {
+  position: relative;
+}
+
+.info-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2563EB;
+  border: none;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.info-btn:hover {
+  background: #1d4ed8;
+  color: #FFFFFF;
+}
+
+/* Modal Overlay */
+.note-modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.note-modal-overlay.active {
+  display: flex;
+}
+
+.note-modal {
+  background: #FFFFFF;
+  max-width: 600px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.note-modal-header {
+  background: #EBF5FF;
+  padding: 16px 20px;
+  border-bottom: 3px solid #2563EB;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.note-modal-label {
+  font-weight: bold;
+  color: #2563EB;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.note-modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666666;
+  line-height: 1;
+}
+
+.note-modal-close:hover {
+  color: #000000;
+}
+
+.note-modal-content {
+  padding: 24px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.note-modal-content h3 {
+  font-size: 18px;
+  margin-bottom: 12px;
+  color: #000000;
+}
+
+.note-modal-content p {
+  margin-bottom: 16px;
+  color: #333333;
+}
+
+.note-modal-content ul,
+.note-modal-content ol {
+  margin-bottom: 16px;
+  padding-left: 20px;
+  list-style-position: inside;
+}
+
+.note-modal-content li {
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+.note-modal-content strong {
+  color: #000000;
+}
+
+/* Accordion / FAQ Styles */
+.accordion {
+  border: 1px solid #D0D0D0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.accordion summary {
+  padding: 16px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion summary::after {
+  content: '+';
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: #666;
+}
+
+.accordion[open] summary::after {
+  content: '−';
+}
+
+.accordion[open] summary {
+  border-bottom: 1px solid #D0D0D0;
+}
+
+.accordion .accordion-content {
+  padding: 16px 20px;
+}
+
+.accordion .accordion-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Help Bar */
+.mobile-help-bar {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #1e40af;
+  color: #FFFFFF;
+  padding: 12px 20px;
+  z-index: 1001;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-help-bar a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mobile-help-bar a:hover {
+  text-decoration: none;
+}
+
+.mobile-help-bar .help-text {
+  font-size: 0.875rem;
+}
+
+.mobile-help-bar .help-text strong {
+  display: inline;
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+.mobile-help-bar .help-cta {
+  background: #FFFFFF;
+  color: #1e40af;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.mobile-help-bar .help-cta:hover {
+  background: #dbeafe;
+}
+
+/* Add padding to body so footer isn't hidden behind the bar */
+body {
+  padding-bottom: 60px;
+}
+
+@media (max-width: 768px) {
+  .mobile-help-bar .help-text strong {
+    display: block;
+    margin-right: 0;
   }
 }

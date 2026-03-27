@@ -26,12 +26,6 @@
           </div>
           <div class="nav-item">
             <a href="programs.html">Programs</a>
-            <div class="dropdown">
-              <a href="programs.html#emergency">Emergency Services</a>
-              <a href="programs.html#recovery">Recovery Programs</a>
-              <a href="programs/medical-clinic.html">Medical Clinic</a>
-              <a href="programs/learning-center.html">Learning Center</a>
-            </div>
           </div>
           <div class="nav-item">
             <a href="get-involved.html">Get Involved</a>
@@ -39,7 +33,8 @@
               <a href="get-involved.html#volunteer">Volunteer</a>
               <a href="get-involved.html#events">Events</a>
               <a href="get-involved.html#pray">Pray</a>
-              <a href="get-involved.html#careers">Careers</a>
+              <a href="get-involved.html#subscribe">Subscribe</a>
+              <a href="get-involved.html#donate-goods">Donate Goods</a>
             </div>
           </div>
         </div>
@@ -50,7 +45,7 @@
           <div class="nav-item">
             <a href="give.html">Ways to Give</a>
           </div>
-          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Give</a>
+          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Donate Now</a>
         </div>
       </nav>
     </div>
@@ -58,7 +53,8 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section-with-note">
+      <button class="info-btn" onclick="openNote('hero-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <h1>Hope Starts Here</h1>
         <p>For 75 years, we've been transforming lives devastated by homelessness through Christ-centered programs that restore body, mind, and spirit.</p>
@@ -107,7 +103,8 @@
     </section>
 
     <!-- Featured Campaigns Section -->
-    <section>
+    <section class="section-with-note">
+      <button class="info-btn" onclick="openNote('campaign-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <div class="section-header">
           <h2>Ways to Help Right Now</h2>
@@ -166,7 +163,8 @@
     </section>
 
     <!-- Story Section -->
-    <section>
+    <section class="section-with-note">
+      <button class="info-btn" onclick="openNote('story-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <div class="two-col">
           <div class="placeholder-image large">[Photo of Ryan]</div>
@@ -182,10 +180,11 @@
     </section>
 
     <!-- Call to Action Section -->
-    <section class="cta-section alt">
+    <section class="cta-section alt section-with-note">
+      <button class="info-btn" onclick="openNote('cta-note')" aria-label="View strategic note">i</button>
       <div class="container">
-        <h2>Become the Hero in Someone's Story</h2>
-        <p>When you give to Capital City Rescue Mission, you're not just meeting a need—you're opening the door to complete life transformation.</p>
+        <h2>Be Part of Someone's Transformation</h2>
+        <p>Your gift walks alongside people as they rebuild their lives—from the first meal to lasting independence.</p>
         <div class="cta-buttons">
           <a href="give.html" class="btn btn-primary">Give Hope Today</a>
           <a href="give.html#monthly" class="btn btn-secondary">Become a Monthly Partner</a>
@@ -215,8 +214,7 @@
           <ul>
             <li><a href="programs.html#emergency">Emergency Services</a></li>
             <li><a href="programs.html#recovery">Recovery Programs</a></li>
-            <li><a href="programs/medical-clinic.html">Medical Clinic</a></li>
-            <li><a href="programs/learning-center.html">Learning Center</a></li>
+            <li><a href="programs.html#support">Support Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -225,7 +223,8 @@
             <li><a href="get-involved.html#volunteer">Volunteer</a></li>
             <li><a href="get-involved.html#events">Events</a></li>
             <li><a href="get-involved.html#pray">Pray</a></li>
-            <li><a href="get-involved.html#careers">Careers</a></li>
+            <li><a href="get-involved.html#subscribe">Subscribe</a></li>
+            <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -249,6 +248,104 @@
       </div>
     </div>
   </footer>
+
+  <!-- Strategic Note Modals -->
+  <div id="campaign-note" class="note-modal-overlay" onclick="closeNote(event, 'campaign-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'campaign-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Campaign Slider</h3>
+        <p><strong>The problem:</strong> Seasonal campaigns like Hearts of Hope and Amazon Wish Lists were taking up permanent navigation space, cluttering the menu and competing with core pages.</p>
+        <p><strong>Our approach:</strong> A dedicated homepage section that rotates campaigns throughout the year. This gives seasonal initiatives prominent visibility without permanent nav real estate.</p>
+        <p><strong>Benefits:</strong></p>
+        <ul>
+          <li>Keeps navigation clean and focused</li>
+          <li>Campaigns get better homepage placement than a nav dropdown</li>
+          <li>Easy for staff to update as campaigns change</li>
+          <li>Can highlight 3 initiatives at once (current nav only showed 2)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="story-note" class="note-modal-overlay" onclick="closeNote(event, 'story-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'story-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Story Placement</h3>
+        <p><strong>Why a story on the homepage:</strong> Personal transformation stories are CCRM's most compelling content. Featuring one prominently on the homepage creates emotional connection and demonstrates real impact. The quote-forward format lets visitors hear directly from someone whose life changed.</p>
+        <p><strong>Recommendation:</strong> Rotate this featured story periodically (quarterly?) to keep the homepage fresh and showcase different programs/demographics.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="cta-note" class="note-modal-overlay" onclick="closeNote(event, 'cta-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'cta-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Hero Positioning</h3>
+        <p>We intentionally avoid "donor as hero" language here. The people being served are the heroes of their own transformation stories—donors are the guides who make the journey possible, not the ones taking it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="hero-note" class="note-modal-overlay" onclick="closeNote(event, 'hero-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'hero-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Hero Messaging</h3>
+        <p><strong>"Hope Starts Here"</strong> is one of the recommended taglines from the brand messaging work. It's short, action-oriented, and positions the Mission as a starting point—not just a place to get a meal, but the beginning of transformation.</p>
+        <p><strong>Why lead with 75 years:</strong> Longevity builds trust. In a space where donors worry about fly-by-night organizations, 75 years of continuous service signals stability, credibility, and proven results. It also differentiates CCRM from newer social service organizations.</p>
+        <p><strong>"Christ-centered" in the first sentence:</strong> This is intentional. CCRM doesn't shy away from their faith foundation—it's their core differentiator. Putting it in the hero immediately signals to faith-driven donors (their primary audience) that this organization shares their values. For secular visitors, it sets clear expectations upfront.</p>
+        <p><strong>"Body, mind, and spirit":</strong> This phrase captures CCRM's whole-person approach and distinguishes them from organizations that only address physical needs. It hints at the comprehensive programs visitors will learn about as they scroll.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openNote(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeNote(event, id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.note-modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- Mobile Help Bar -->
+  <div class="mobile-help-bar">
+    <a href="tel:5184620459">
+      <div class="help-text">
+        <strong>Need Help?</strong>
+        (518) 462-0459
+      </div>
+      <span class="help-cta">Call Now</span>
+    </a>
+  </div>
 
 </body>
 </html>

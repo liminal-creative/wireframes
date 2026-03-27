@@ -26,12 +26,6 @@
           </div>
           <div class="nav-item">
             <a href="programs.html">Programs</a>
-            <div class="dropdown">
-              <a href="programs.html#emergency">Emergency Services</a>
-              <a href="programs.html#recovery">Recovery Programs</a>
-              <a href="programs/medical-clinic.html">Medical Clinic</a>
-              <a href="programs/learning-center.html">Learning Center</a>
-            </div>
           </div>
           <div class="nav-item">
             <a href="get-involved.html">Get Involved</a>
@@ -39,7 +33,8 @@
               <a href="get-involved.html#volunteer">Volunteer</a>
               <a href="get-involved.html#events">Events</a>
               <a href="get-involved.html#pray">Pray</a>
-              <a href="get-involved.html#careers">Careers</a>
+              <a href="get-involved.html#subscribe">Subscribe</a>
+              <a href="get-involved.html#donate-goods">Donate Goods</a>
             </div>
           </div>
         </div>
@@ -50,7 +45,7 @@
           <div class="nav-item">
             <a href="give.html">Ways to Give</a>
           </div>
-          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Give</a>
+          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Donate Now</a>
         </div>
       </nav>
     </div>
@@ -58,7 +53,8 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section-with-note">
+      <button class="info-btn" onclick="openNote('page-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <h1>Lives Transformed</h1>
         <p>Real stories of hope, healing, and new beginnings made possible by people like you.</p>
@@ -168,8 +164,7 @@
           <ul>
             <li><a href="programs.html#emergency">Emergency Services</a></li>
             <li><a href="programs.html#recovery">Recovery Programs</a></li>
-            <li><a href="programs/medical-clinic.html">Medical Clinic</a></li>
-            <li><a href="programs/learning-center.html">Learning Center</a></li>
+            <li><a href="programs.html#support">Support Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -178,7 +173,8 @@
             <li><a href="get-involved.html#volunteer">Volunteer</a></li>
             <li><a href="get-involved.html#events">Events</a></li>
             <li><a href="get-involved.html#pray">Pray</a></li>
-            <li><a href="get-involved.html#careers">Careers</a></li>
+            <li><a href="get-involved.html#subscribe">Subscribe</a></li>
+            <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -202,6 +198,58 @@
       </div>
     </div>
   </footer>
+
+  <!-- Strategic Note Modal -->
+  <div id="page-note" class="note-modal-overlay" onclick="closeNote(event, 'page-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'page-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>Stories as Social Proof</h3>
+        <p><strong>Why this page matters:</strong> Transformation stories are CCRM's most powerful content. They prove the mission works, create emotional connection, and show donors the real impact of their gifts.</p>
+        <p><strong>Recommendation:</strong> Invest in gathering and publishing more stories regularly. Consider:</p>
+        <ul>
+          <li>Video testimonials (they already have some on YouTube)</li>
+          <li>Written stories with photos</li>
+          <li>"Where are they now" follow-ups with past graduates</li>
+          <li>Donor stories (why supporters give)</li>
+        </ul>
+        <p><strong>SEO opportunity:</strong> Individual story pages can rank for recovery-related searches and bring organic traffic.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openNote(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNote(event, id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.note-modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- Mobile Help Bar -->
+  <div class="mobile-help-bar">
+    <a href="tel:5184620459">
+      <div class="help-text">
+        <strong>Need Help?</strong>
+        (518) 462-0459
+      </div>
+      <span class="help-cta">Call Now</span>
+    </a>
+  </div>
 
 </body>
 </html>

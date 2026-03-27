@@ -26,12 +26,6 @@
           </div>
           <div class="nav-item">
             <a href="programs.html">Programs</a>
-            <div class="dropdown">
-              <a href="programs.html#emergency">Emergency Services</a>
-              <a href="programs.html#recovery">Recovery Programs</a>
-              <a href="programs/medical-clinic.html">Medical Clinic</a>
-              <a href="programs/learning-center.html">Learning Center</a>
-            </div>
           </div>
           <div class="nav-item">
             <a href="get-involved.html">Get Involved</a>
@@ -39,7 +33,8 @@
               <a href="get-involved.html#volunteer">Volunteer</a>
               <a href="get-involved.html#events">Events</a>
               <a href="get-involved.html#pray">Pray</a>
-              <a href="get-involved.html#careers">Careers</a>
+              <a href="get-involved.html#subscribe">Subscribe</a>
+              <a href="get-involved.html#donate-goods">Donate Goods</a>
             </div>
           </div>
         </div>
@@ -50,7 +45,7 @@
           <div class="nav-item">
             <a href="give.html">Ways to Give</a>
           </div>
-          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Give</a>
+          <a href="https://give.capitalcityrescuemission.org/give" class="btn btn-primary btn-small" target="_blank">Donate Now</a>
         </div>
       </nav>
     </div>
@@ -58,7 +53,8 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero section-with-note">
+      <button class="info-btn" onclick="openNote('page-note')" aria-label="View strategic note">i</button>
       <div class="container">
         <h1>Frequently Asked Questions</h1>
         <p>Find answers to common questions about our programs and how to get involved.</p>
@@ -71,106 +67,144 @@
 
         <h3>For Those Seeking Help</h3>
 
-        <div class="faq-item">
-          <h4>Do I need ID to receive services?</h4>
-          <p>No. You don't need identification to receive meals, clothing, or emergency shelter.</p>
-        </div>
+        <details class="accordion">
+          <summary>Do I need ID to receive services?</summary>
+          <div class="accordion-content">
+            <p>No. You don't need identification to receive meals, clothing, or emergency shelter.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>What are your meal times?</h4>
-          <p>Breakfast is served at 7:00 AM, lunch at 12:00 PM, and dinner at 5:00 PM daily.</p>
-        </div>
+        <details class="accordion">
+          <summary>What are your meal times?</summary>
+          <div class="accordion-content">
+            <p>Breakfast is served at 7:00 AM, lunch at 12:00 PM, and dinner at 5:00 PM daily.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Can I bring my children?</h4>
-          <p>Women with children can access our New Faith Program. For emergency family shelter, we can connect you with partner organizations that serve families.</p>
-        </div>
+        <details class="accordion">
+          <summary>Can I bring my children?</summary>
+          <div class="accordion-content">
+            <p>Women with children can access our New Faith Program. For emergency family shelter, we can connect you with partner organizations that serve families.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Do I have to attend chapel to receive help?</h4>
-          <p>Chapel services are offered daily and are an important part of what we do, but attendance is not required to receive meals or emergency shelter.</p>
-        </div>
+        <details class="accordion">
+          <summary>Do I have to attend chapel to receive help?</summary>
+          <div class="accordion-content">
+            <p>Chapel services are offered daily and are an important part of what we do, but attendance is not required to receive meals or emergency shelter.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>How do I join a recovery program?</h4>
-          <p>Call us at (518) 462-0459 or visit in person to speak with our intake team about the New Life Program for men or New Faith Program for women.</p>
-        </div>
+        <details class="accordion">
+          <summary>How do I join a recovery program?</summary>
+          <div class="accordion-content">
+            <p>Call us at (518) 462-0459 or visit in person to speak with our intake team about the New Life Program for men or New Faith Program for women.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>How long can I stay in emergency shelter?</h4>
-          <p>Men can stay up to 40 consecutive nights in our emergency shelter. Extended stays may be available through our Work Readiness Program.</p>
-        </div>
+        <details class="accordion">
+          <summary>How long can I stay in emergency shelter?</summary>
+          <div class="accordion-content">
+            <p>Men can stay up to 40 consecutive nights in our emergency shelter. Extended stays may be available through our Work Readiness Program.</p>
+          </div>
+        </details>
 
         <h3>For Donors & Supporters</h3>
 
-        <div class="faq-item">
-          <h4>How is my donation used?</h4>
-          <p>Your donation directly funds meals, shelter, recovery programs, medical care, and all the services that help people rebuild their lives. We are privately funded and do not accept government money.</p>
-        </div>
+        <details class="accordion">
+          <summary>How is my donation used?</summary>
+          <div class="accordion-content">
+            <p>Your donation directly funds meals, shelter, recovery programs, medical care, and all the services that help people rebuild their lives. We are privately funded and do not accept government money.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Is my donation tax-deductible?</h4>
-          <p>Yes. Capital City Rescue Mission is a 501(c)(3) nonprofit organization. You will receive a receipt for your tax records.</p>
-        </div>
+        <details class="accordion">
+          <summary>Is my donation tax-deductible?</summary>
+          <div class="accordion-content">
+            <p>Yes. Capital City Rescue Mission is a 501(c)(3) nonprofit organization. You will receive a receipt for your tax records.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>What is the cost per meal?</h4>
-          <p>$2.40 provides one hot, nutritious meal to someone in need.</p>
-        </div>
+        <details class="accordion">
+          <summary>What is the cost per meal?</summary>
+          <div class="accordion-content">
+            <p>$2.40 provides one hot, nutritious meal to someone in need.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Can I designate my gift to a specific program?</h4>
-          <p>Yes. Contact us if you'd like to direct your gift to a specific area of ministry.</p>
-        </div>
+        <details class="accordion">
+          <summary>Can I designate my gift to a specific program?</summary>
+          <div class="accordion-content">
+            <p>Yes. Contact us if you'd like to direct your gift to a specific area of ministry.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>How can I give monthly?</h4>
-          <p>Visit our Give page and select "Monthly" to become a Hope Partner with a recurring gift.</p>
-        </div>
+        <details class="accordion">
+          <summary>How can I give monthly?</summary>
+          <div class="accordion-content">
+            <p>Visit our Give page and select "Monthly" to become a Hope Partner with a recurring gift.</p>
+          </div>
+        </details>
 
         <h3>For Volunteers</h3>
 
-        <div class="faq-item">
-          <h4>How do I sign up to volunteer?</h4>
-          <p>Visit our Volunteer page or call (518) 462-0459 to learn about current opportunities and sign up.</p>
-        </div>
+        <details class="accordion">
+          <summary>How do I sign up to volunteer?</summary>
+          <div class="accordion-content">
+            <p>Visit our Volunteer page or call (518) 462-0459 to learn about current opportunities and sign up.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Can my church lead a chapel service?</h4>
-          <p>Yes! We welcome churches to sign up for evening chapel services. Contact us to schedule.</p>
-        </div>
+        <details class="accordion">
+          <summary>Can my church lead a chapel service?</summary>
+          <div class="accordion-content">
+            <p>Yes! We welcome churches to sign up for evening chapel services. Contact us to schedule.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>What volunteer opportunities are available?</h4>
-          <p>We need help serving meals, sorting donations, administrative support, and professional skills like medical care and career coaching.</p>
-        </div>
+        <details class="accordion">
+          <summary>What volunteer opportunities are available?</summary>
+          <div class="accordion-content">
+            <p>We need help serving meals, sorting donations, administrative support, and professional skills like medical care and career coaching.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Do I need a background check to volunteer?</h4>
-          <p>Requirements vary by role. Our volunteer coordinator will guide you through the process.</p>
-        </div>
+        <details class="accordion">
+          <summary>Do I need a background check to volunteer?</summary>
+          <div class="accordion-content">
+            <p>Requirements vary by role. Our volunteer coordinator will guide you through the process.</p>
+          </div>
+        </details>
 
         <h3>About the Mission</h3>
 
-        <div class="faq-item">
-          <h4>When was Capital City Rescue Mission founded?</h4>
-          <p>We were founded in 1949 by a group of Albany businessmen who felt called to serve those experiencing homelessness.</p>
-        </div>
+        <details class="accordion">
+          <summary>When was Capital City Rescue Mission founded?</summary>
+          <div class="accordion-content">
+            <p>We were founded in 1949 by a group of Albany businessmen who felt called to serve those experiencing homelessness.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Do you accept government funding?</h4>
-          <p>No. We are entirely privately funded, which allows us to maintain our Christ-centered mission without compromise.</p>
-        </div>
+        <details class="accordion">
+          <summary>Do you accept government funding?</summary>
+          <div class="accordion-content">
+            <p>No. We are entirely privately funded, which allows us to maintain our Christ-centered mission without compromise.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>Are you affiliated with a church or denomination?</h4>
-          <p>We are an independent, interdenominational Christian ministry supported by over 200 churches throughout the Capital Region.</p>
-        </div>
+        <details class="accordion">
+          <summary>Are you affiliated with a church or denomination?</summary>
+          <div class="accordion-content">
+            <p>We are an independent, interdenominational Christian ministry supported by over 200 churches throughout the Capital Region.</p>
+          </div>
+        </details>
 
-        <div class="faq-item">
-          <h4>How can I see your financial information?</h4>
-          <p>Visit our Financials page to view our annual reports and financial statements.</p>
-        </div>
+        <details class="accordion">
+          <summary>How can I see your financial information?</summary>
+          <div class="accordion-content">
+            <p>Visit our Financials page to view our annual reports and financial statements.</p>
+          </div>
+        </details>
 
       </div>
     </section>
@@ -196,8 +230,7 @@
           <ul>
             <li><a href="programs.html#emergency">Emergency Services</a></li>
             <li><a href="programs.html#recovery">Recovery Programs</a></li>
-            <li><a href="programs/medical-clinic.html">Medical Clinic</a></li>
-            <li><a href="programs/learning-center.html">Learning Center</a></li>
+            <li><a href="programs.html#support">Support Services</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -206,7 +239,8 @@
             <li><a href="get-involved.html#volunteer">Volunteer</a></li>
             <li><a href="get-involved.html#events">Events</a></li>
             <li><a href="get-involved.html#pray">Pray</a></li>
-            <li><a href="get-involved.html#careers">Careers</a></li>
+            <li><a href="get-involved.html#subscribe">Subscribe</a></li>
+            <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -230,6 +264,53 @@
       </div>
     </div>
   </footer>
+
+  <!-- Strategic Note Modal -->
+  <div id="page-note" class="note-modal-overlay" onclick="closeNote(event, 'page-note')">
+    <div class="note-modal" onclick="event.stopPropagation()">
+      <div class="note-modal-header">
+        <span class="note-modal-label">Strategic Note</span>
+        <button class="note-modal-close" onclick="closeNote(event, 'page-note')">&times;</button>
+      </div>
+      <div class="note-modal-content">
+        <h3>FAQ Serves Multiple Audiences</h3>
+        <p><strong>Structure:</strong> FAQs are grouped by audience—people seeking help, donors, volunteers, and general questions about the Mission. This helps visitors quickly find answers relevant to them.</p>
+        <p><strong>For people seeking help:</strong> We address common barriers to entry: no ID needed, chapel not required, children welcome. These answers can reduce hesitation and get people in the door.</p>
+        <p><strong>For donors:</strong> We reinforce stewardship messaging and explain giving options.</p>
+        <p><strong>SEO value:</strong> FAQ pages can capture long-tail search queries ("do I need ID for homeless shelter Albany") and bring qualified traffic.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openNote(id) {
+      document.getElementById(id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeNote(event, id) {
+      document.getElementById(id).classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.note-modal-overlay.active').forEach(function(modal) {
+          modal.classList.remove('active');
+        });
+        document.body.style.overflow = '';
+      }
+    });
+  </script>
+
+  <!-- Mobile Help Bar -->
+  <div class="mobile-help-bar">
+    <a href="tel:5184620459">
+      <div class="help-text">
+        <strong>Need Help?</strong>
+        (518) 462-0459
+      </div>
+      <span class="help-cta">Call Now</span>
+    </a>
+  </div>
 
 </body>
 </html>
