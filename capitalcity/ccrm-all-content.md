@@ -1564,7 +1564,118 @@ Join Us Friday Night
 
 ---
 
-# 20_CHAPEL SERVICES PAGE
+# 20_FINANCIALS PAGE
+
+## Hero Section
+
+**Headline:**
+Transparent Stewardship
+
+**Supporting Sentence:**
+We handle every gift with integrity and accountability.
+
+---
+
+## Overview Section
+
+**Headline:**
+Your Trust Matters
+
+**Body:**
+Capital City Rescue Mission is privately funded and accepts no government money. This independence allows us to keep Christ at the center of everything we do—and it means your trust is essential to our work.
+
+We are committed to financial transparency and responsible stewardship of every dollar entrusted to us. Below you'll find our annual reports, financial statements, and third-party ratings.
+
+---
+
+## Accountability Section
+
+**Headline:**
+Accountability & Ratings
+
+*[DESIGN NOTE: Display logos/badges for each organization with links]*
+
+**GuideStar / Candid**
+View our nonprofit profile and transparency rating.
+
+**ECFA Member**
+We are a member of the Evangelical Council for Financial Accountability, meeting their standards for financial integrity and ethical fundraising.
+
+**Citygate Network**
+We are a member of Citygate Network, the association of rescue missions across North America.
+
+*[NOTE: Verify current memberships and ratings with CCRM]*
+
+---
+
+## Annual Reports Section
+
+**Headline:**
+Annual Reports
+
+*[DESIGN NOTE: List of downloadable PDFs with year and file size]*
+
+- 2025 Annual Report (PDF)
+- 2024 Annual Report (PDF)
+- 2023 Annual Report (PDF)
+
+*[NOTE: CCRM to provide PDF files]*
+
+---
+
+## Financial Statements Section
+
+**Headline:**
+Financial Statements
+
+*[DESIGN NOTE: List of downloadable PDFs]*
+
+- 2025 Audited Financial Statements (PDF)
+- 2024 Audited Financial Statements (PDF)
+- Form 990 - 2024 (PDF)
+- Form 990 - 2023 (PDF)
+
+*[NOTE: CCRM to provide PDF files]*
+
+---
+
+## How Funds Are Used Section
+
+**Headline:**
+How Your Gifts Are Used
+
+*[DESIGN NOTE: Simple pie chart or bar graphic showing allocation]*
+
+**Programs & Services:** XX%
+Direct services including meals, shelter, recovery programs, medical clinic, and support services.
+
+**Administration:** XX%
+Operational costs that keep the Mission running effectively.
+
+**Fundraising:** XX%
+Costs associated with raising the funds that make our work possible.
+
+*[NOTE: CCRM to provide current percentages]*
+
+---
+
+## Call to Action Section
+
+**Headline:**
+Give With Confidence
+
+**Supporting Sentence:**
+Your generosity is handled with care and used to transform lives.
+
+**Primary CTA Button:**
+Give Now
+
+**Secondary CTA Button:**
+Contact Us With Questions
+
+---
+
+# 21_CHAPEL SERVICES PAGE
 
 ## Hero Section
 
