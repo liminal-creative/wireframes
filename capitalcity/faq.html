@@ -8,40 +8,7 @@
 </head>
 <body>
 
-  <!-- Password Gate -->
-  <div id="passwordGate" class="password-gate">
-    <div class="password-form">
-      <h2>Wireframe Preview</h2>
-        <p class="site-name">for Capital City Rescue Mission</p>
-      <p>Enter password to view this site</p>
-      <div class="password-input-wrapper">
-        <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter')checkPassword()">
-        <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-      </div>
-      <button onclick="checkPassword()">Enter</button>
-      <p id="passwordError" class="error">Incorrect password</p>
-    </div>
-  </div>
-  <script>
-    (function() {
-      var PASS = 'ccrm2025';
-      if (localStorage.getItem('wireframe_auth') === 'true') {
-        document.getElementById('passwordGate').classList.add('hidden');
-      }
-      window.checkPassword = function() {
-        if (document.getElementById('passwordInput').value === PASS) {
-          localStorage.setItem('wireframe_auth', 'true');
-          document.getElementById('passwordGate').classList.add('hidden');
-        } else {
-          document.getElementById('passwordError').classList.add('show');
-        }
-      };
-      window.togglePassword = function() {
-        var input = document.getElementById('passwordInput');
-        input.type = input.type === 'password' ? 'text' : 'password';
-      };
-    })();
-  </script>
+  <script src="js/password-gate.js"></script>
 
   <header class="site-header">
     <div class="header-inner">
