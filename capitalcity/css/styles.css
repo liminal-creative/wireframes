@@ -823,7 +823,7 @@ section.alt {
   left: 0;
   right: 0;
   bottom: 0;
-  background: #000000;
+  background: #990066;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -841,7 +841,7 @@ section.alt {
   text-align: center;
   max-width: 400px;
   width: 90%;
-  border: 2px solid #990066;
+  border: 2px solid #FFE802;
 }
 
 .password-form h2 {
