@@ -13,8 +13,10 @@
     <div class="password-form">
       <h2>Wireframe Preview</h2>
       <p>Enter password to view this site</p>
-      <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter')checkPassword()">
-      <label class="show-password"><input type="checkbox" onchange="togglePassword()"> Show password</label>
+      <div class="password-input-wrapper">
+        <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter')checkPassword()">
+        <button type="button" class="password-toggle" onclick="togglePassword()" aria-label="Show password"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      </div>
       <button onclick="checkPassword()">Enter</button>
       <p id="passwordError" class="error">Incorrect password</p>
     </div>
