@@ -858,11 +858,11 @@ section.alt {
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
-  border: 2px solid #990066;
+  border: none;
   border-radius: 4px;
   margin-bottom: 16px;
-  background: #000000;
-  color: #FFFFFF;
+  background: #FFFFFF;
+  color: #000000;
 }
 
 .password-form input[type="password"]::placeholder {
