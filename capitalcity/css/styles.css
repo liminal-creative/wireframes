@@ -816,14 +816,14 @@ section.alt {
   margin-bottom: 0;
 }
 
-/* Password Gate */
+/* Password Gate - Liminal Creative branding */
 .password-gate {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: #1e40af;
+  background: #000000;
   z-index: 9999;
   display: flex;
   align-items: center;
@@ -835,22 +835,22 @@ section.alt {
 }
 
 .password-form {
-  background: #FFFFFF;
+  background: #000000;
   padding: 40px;
   border-radius: 8px;
   text-align: center;
   max-width: 400px;
   width: 90%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid #990066;
 }
 
 .password-form h2 {
   margin-bottom: 8px;
-  color: #1e40af;
+  color: #FFE802;
 }
 
 .password-form p {
-  color: #666;
+  color: #FFFFFF;
   margin-bottom: 24px;
   font-size: 0.9rem;
 }
@@ -859,34 +859,42 @@ section.alt {
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
-  border: 2px solid #D0D0D0;
+  border: 2px solid #990066;
   border-radius: 4px;
   margin-bottom: 16px;
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.password-form input[type="password"]::placeholder {
+  color: #666;
 }
 
 .password-form input[type="password"]:focus {
   outline: none;
-  border-color: #1e40af;
+  border-color: #FFE802;
 }
 
 .password-form button {
   width: 100%;
   padding: 12px 16px;
   font-size: 1rem;
-  background: #1e40af;
+  background: #990066;
   color: #FFFFFF;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 600;
+  transition: background 0.2s;
 }
 
 .password-form button:hover {
-  background: #1d4ed8;
+  background: #FFE802;
+  color: #000000;
 }
 
 .password-form .error {
-  color: #dc2626;
+  color: #FFE802;
   font-size: 0.875rem;
   margin-top: 12px;
   display: none;
