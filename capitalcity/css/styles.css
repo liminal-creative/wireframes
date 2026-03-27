@@ -844,8 +844,14 @@ section.alt {
 }
 
 .password-form h2 {
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   color: #FFE802;
+}
+
+.password-form .site-name {
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  margin-bottom: 16px;
 }
 
 .password-form p {
