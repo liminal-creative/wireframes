@@ -3,6 +3,28 @@
 
 ---
 
+# STRATEGIC NOTES FOR CLIENT
+
+## Programs Page Structure Decision
+
+**Current site:** Two separate landing pages—"Homeless Services" and "Recovery Programs"—each with 5-6 sub-pages underneath.
+
+**New approach:** One unified "Programs" landing page that shows all services organized into categories (Emergency Services, Recovery Programs, Support Services), with individual program pages linked from there.
+
+**Why we recommend this:**
+
+1. **Reinforces your core message.** The single page tells the "complete pathway from crisis to independence" story better. Donors see immediately that you're not just a soup kitchen—you walk with people through their entire journey.
+
+2. **Simpler navigation.** Fewer dropdowns, less cognitive load. People find what they need faster.
+
+3. **Get Help page handles the crisis audience.** People seeking immediate help don't need to understand your full program structure—they need fast answers. The Get Help page is designed for them, with clear paths to "I need food/shelter tonight" vs. "I'm ready for recovery."
+
+4. **Individual program pages still exist.** We're not losing depth. Every program (New Life, New Faith, Medical Clinic, etc.) still has its own dedicated page with full details. The landing page just organizes them better.
+
+**The tradeoff:** You lose a dedicated "Recovery Programs" landing page that could rank separately for SEO. If organic search traffic to that page is significant, we can revisit. But for most users, the unified approach is clearer and stronger.
+
+---
+
 # NAVIGATION
 
 ## Primary Navigation (Left)
@@ -10,8 +32,8 @@
 | Top-Level | Dropdown Items |
 |-----------|----------------|
 | About | Our Story, Leadership, Financials, Stories, Contact |
-| Programs | Emergency Services, Recovery Programs, Medical Clinic, Learning Center |
-| Get Involved | Volunteer, Events, Pray, Careers |
+| Programs | *(no dropdown—links directly to /programs.html)* |
+| Get Involved | Volunteer, Events, Pray, Subscribe |
 
 ## Utility Navigation (Right)
 
@@ -20,15 +42,41 @@
 | Get Help | Stands alone — no dropdown. Critical for people in crisis. |
 | Give *(button style)* | Primary CTA. Links to donation page. |
 
-## Notes
+## Strategic Note: Navigation Simplification
 
-Reduced from 8 to 5 top-level items. Two clear user paths: people needing help → "Get Help" is always visible; donors/supporters → "Give" is a highlighted button.
+**The problem:** The current site has 8 top-level nav items with deep nested dropdowns, creating decision fatigue. Campaign-specific items (Hearts of Hope, Amazon Wish Lists) occupy permanent nav space despite being seasonal.
 
-Removed from top nav:
-- Hearts of Hope → Featured in homepage campaign slider
-- Amazon Wish Lists → Featured in homepage campaign slider + linked from Give page
-- Newsletters → Footer or About page
-- FAQ → Footer or Get Help page
+**Our approach:** Reduced to 5 top-level items with two clear user paths:
+- People needing help → "Get Help" is always visible, no hunting
+- Donors/supporters → "Give" is a highlighted button, "Get Involved" is one click away
+
+**What moved:**
+- Hearts of Hope → Homepage campaign slider (rotates seasonally)
+- Amazon Wish Lists → Homepage campaign slider + Give page
+- Newsletters → Footer and About page
+- FAQ → Footer and Get Help page
+
+**Why this works:** The homepage campaign slider gives seasonal initiatives prominent placement without permanently cluttering navigation. Staff can update the slider as campaigns change throughout the year.
+
+---
+
+## Strategic Note: Programs Dropdown Structure
+
+**The decision:** No dropdown for Programs—it links directly to the Programs landing page.
+
+**Why this works:**
+
+1. **Cleaner navigation.** One less dropdown to hover over, less visual clutter.
+
+2. **Forces the overview first.** We *want* donors to see the full "pathway from crisis to independence" story before drilling into individual programs. A dropdown lets them skip that context.
+
+3. **The Programs page routes to sub-pages.** The landing page is designed to give an overview and link out to detailed program pages. It already does the navigation job.
+
+4. **People seeking help use Get Help.** The Programs dropdown isn't for people in crisis—they should land on Get Help, which has direct links to meals, shelter, medical care, and recovery.
+
+5. **Less maintenance.** No dropdown to keep in sync with page changes.
+
+**What we considered:** A dropdown with anchor links to sections (#emergency, #recovery, #support). We rejected it because it adds complexity without meaningful benefit—users land on the same page either way.
 
 ---
 
@@ -41,6 +89,16 @@ Hope Starts Here
 
 **Supporting Sentence:**
 For 75 years, we've been transforming lives devastated by homelessness through Christ-centered programs that restore body, mind, and spirit.
+
+## Strategic Note: Hero Messaging
+
+**"Hope Starts Here"** is one of the recommended taglines from the brand messaging work. It's short, action-oriented, and positions the Mission as a starting point—not just a place to get a meal, but the beginning of transformation.
+
+**Why lead with 75 years:** Longevity builds trust. In a space where donors worry about fly-by-night organizations, 75 years of continuous service signals stability, credibility, and proven results. It also differentiates CCRM from newer social service organizations.
+
+**"Christ-centered" in the first sentence:** This is intentional. CCRM doesn't shy away from their faith foundation—it's their core differentiator. Putting it in the hero immediately signals to faith-driven donors (their primary audience) that this organization shares their values. For secular visitors, it sets clear expectations upfront.
+
+**"Body, mind, and spirit":** This phrase captures CCRM's whole-person approach and distinguishes them from organizations that only address physical needs. It hints at the comprehensive programs visitors will learn about as they scroll.
 
 ---
 
@@ -91,6 +149,18 @@ Learn more about opportunities to engage in our most important events and initia
 - Amazon Wish List
 - Thanksgiving Meal Drive
 
+## Strategic Note: Campaign Slider
+
+**The problem:** Seasonal campaigns like Hearts of Hope and Amazon Wish Lists were taking up permanent navigation space, cluttering the menu and competing with core pages.
+
+**Our approach:** A dedicated homepage section that rotates campaigns throughout the year. This gives seasonal initiatives prominent visibility without permanent nav real estate.
+
+**Benefits:**
+- Keeps navigation clean and focused
+- Campaigns get better homepage placement than a nav dropdown
+- Easy for staff to update as campaigns change
+- Can highlight 3 initiatives at once (current nav only showed 2)
+
 ---
 
 ## Impact Section
@@ -106,6 +176,8 @@ Last year, you helped provide:
 - 273,820 items of clothing given
 - 1,738 medical appointments
 - 200+ lives transformed through recovery
+
+*[NOTE FOR CCRM: Please confirm current year impact numbers before launch.]*
 
 ---
 
@@ -124,15 +196,21 @@ Today, Ryan has been sober for over three years. He's working, living responsibl
 **Call to Action:**
 Read More Stories →
 
+## Strategic Note: Story Placement
+
+**Why a story on the homepage:** Personal transformation stories are CCRM's most compelling content. Featuring one prominently on the homepage creates emotional connection and demonstrates real impact. The quote-forward format lets visitors hear directly from someone whose life changed.
+
+**Recommendation:** Rotate this featured story periodically (quarterly?) to keep the homepage fresh and showcase different programs/demographics.
+
 ---
 
 ## Call to Action Section
 
 **Headline:**
-Become the Hero in Someone's Story
+Be Part of Someone's Transformation
 
 **Supporting Sentence:**
-When you give to Capital City Rescue Mission, you're not just meeting a need—you're opening the door to complete life transformation.
+Your gift walks alongside people as they rebuild their lives—from the first meal to lasting independence.
 
 **Primary CTA Button:**
 Give Hope Today
@@ -142,6 +220,10 @@ Become a Monthly Partner
 
 **Supporting Detail:**
 $2.40 provides a meal and the first step toward lasting change.
+
+## Strategic Note: Hero Positioning
+
+We intentionally avoid "donor as hero" language here. The people being served are the heroes of their own transformation stories—donors are the guides who make the journey possible, not the ones taking it.
 
 ---
 
@@ -242,13 +324,23 @@ Contact Us
 
 # 03_PROGRAMS PAGE
 
-## Notes for Client
+## Strategic Note: Programs Page Design
 
-**Structure:** Programs are organized into three clear categories (Emergency Services, Recovery Programs, Support Services) that match the navigation dropdown structure.
+**The goal:** Show donors and supporters the full scope of CCRM's work in one view, reinforcing the "complete pathway from crisis to independence" message.
 
-**Messaging:** The "More Than Emergency Relief" section directly addresses the perception gap identified in discovery—most people only know about meals and shelter, not the full continuum of care.
+**How this page works:**
 
-**Question for CCRM:** Do you want to keep individual pages for each program (New Life, New Faith, Medical Clinic, etc.) as your current site has? If so, we can develop content for those pages next.
+1. **Hero establishes the journey frame.** "A Complete Pathway to Independence" immediately signals this isn't just a soup kitchen—it's comprehensive care from first meal to stable housing.
+
+2. **"More Than Emergency Relief" addresses the perception gap.** From discovery, most people only know CCRM provides meals and shelter. This section directly confronts that misconception and expands their understanding.
+
+3. **Three service categories create clarity.** Rather than listing 10+ programs, we group them into Emergency Services, Recovery Programs, and Support Services. Visitors grasp the structure quickly, then can drill into details.
+
+4. **Each section links to individual program pages.** The landing page is the overview; individual pages provide depth. This keeps the landing page scannable while preserving detailed content for those who want it.
+
+5. **CTA reinforces donor connection.** "Every Program is Free. Every Gift Makes It Possible" ties the comprehensive care story back to donor support.
+
+**Who this page is for:** Primarily donors and supporters who want to understand what CCRM does. People seeking help should use the Get Help page, which prioritizes immediate needs and action.
 
 ---
 
@@ -358,6 +450,18 @@ Volunteer With Us
 ---
 
 # 04_GET HELP PAGE
+
+## Strategic Note: Two Audiences, One Page
+
+**The challenge:** The Get Help page serves two very different people:
+1. Someone in immediate crisis who needs food or shelter tonight
+2. Someone ready to commit to long-term recovery
+
+**Our approach:** The page leads with immediate needs (meals, shelter, clothing, medical) at the top, then transitions to recovery programs below. The FAQ addresses common barriers (no ID needed, chapel not required, etc.) that might prevent someone from seeking help.
+
+**Mobile consideration:** For people in crisis, this page may be accessed on a phone. We recommend a sticky bottom bar with a "Call Now" button so the phone number is always one tap away.
+
+---
 
 ## Hero Section
 
@@ -549,6 +653,121 @@ Many of our staff members are graduates of our programs—people who experienced
 **Call to Action:**
 View Open Positions →
 
+*[NOTE: Careers link also appears in footer navigation.]*
+
+---
+
+# 22_CAREERS PAGE
+
+## Hero Section
+
+**Headline:**
+Work With Us
+
+**Supporting Sentence:**
+Join a team where transformation is the daily mission—and many staff have lived it themselves.
+
+---
+
+## Overview Section
+
+**Headline:**
+More Than a Job
+
+**Body:**
+Capital City Rescue Mission is a Christian ministry that brings God's love to the lost and hurting in our community. Many of our staff members are graduates of our programs—people who experienced transformation and now help others do the same.
+
+We're looking for committed Christians who are actively involved with a local fellowship of believers and have a heart for serving those in need.
+
+---
+
+## Open Positions Section
+
+**Headline:**
+Open Positions
+
+*[DESIGN NOTE: Display as clickable cards. Each card shows job title, type (Full-Time/Part-Time/Live-In), and date posted. Clicking opens the full job detail page or expands to show full description.]*
+
+**Position Card 1:**
+- **Title:** Donor Relations Associate
+- **Type:** Full-Time, In-Person
+- **Salary:** $42,000–$46,000
+- **Posted:** February 14, 2025
+
+**Position Card 2:**
+- **Title:** Women's Resident Assistant
+- **Type:** Full-Time, Live-In
+- **Posted:** February 6, 2025
+
+*[NOTE FOR CCRM: Positions above are pulled from current site. Please confirm which roles are still open and provide any additional openings.]*
+
+---
+
+## How to Apply Section
+
+**Headline:**
+How to Apply
+
+**Option 1: Apply Online**
+Complete our online application form.
+
+**Button:** Apply Online →
+
+**Option 2: Email Your Application**
+Send your cover letter, resume, and Christian testimony to the hiring contact listed on each position.
+
+**Option 3: Mail Your Application**
+Capital City Rescue Mission
+ATTN: Perry Jones
+259 South Pearl St
+Albany, NY 12202
+
+---
+
+## No Current Openings Section
+
+*[DESIGN NOTE: Show this section instead of Open Positions when no jobs are available.]*
+
+**Headline:**
+No Open Positions Right Now
+
+**Body:**
+We don't have any openings at the moment, but we're always interested in hearing from people who are passionate about serving others. Send your resume and Christian testimony to info@capitalcityrescuemission.org and we'll keep you on file for future opportunities.
+
+---
+
+## Call to Action Section
+
+**Headline:**
+Not Ready to Apply?
+
+**Supporting Sentence:**
+There are other ways to be part of the Mission.
+
+**Primary CTA Button:**
+Volunteer With Us
+
+**Secondary CTA Button:**
+Support Our Work
+
+---
+
+## Subscribe Section
+
+**Headline:**
+Stay Connected
+
+**Body:**
+Get occasional updates on volunteer opportunities, ministry news, and stories of transformation from the Mission.
+
+*[DESIGN NOTE: Simple email signup form with one field and submit button.]*
+
+**Field Label:**
+Email Address
+
+**Button:**
+Subscribe
+
 ---
 
 ## Donate Goods Section
@@ -562,6 +781,10 @@ We accept clothing, food, household items, and more. Your donations go directly 
 **Most Needed Items:**
 Men's clothing (all sizes), women's clothing, toiletries, new underwear and socks, non-perishable food, kitchen supplies
 
+**Amazon Wish Lists:**
+- Mission Basics → https://www.amazon.com/hz/wishlist/ls/BEVDSSOOBPXQ *(opens in new window)*
+- Women's Essentials → https://www.amazon.com/registries/gl/guest-view/3H5YU8PR3SBJ2 *(opens in new window)*
+
 **Drop-Off Hours:**
 Monday – Friday: 8:00 AM – 4:00 PM
 Saturday: 9:00 AM – 12:00 PM
@@ -574,6 +797,22 @@ View Full Wish List →
 ---
 
 # 06_GIVE PAGE
+
+## Strategic Note: Giving Page Structure
+
+**Goal:** Make it as easy as possible to give, while also educating donors on impact and offering multiple ways to support.
+
+**Structure logic:**
+1. Hero with clear CTA—don't make them scroll to give
+2. Impact section shows exactly what gifts accomplish (the $2.40 anchor scales up)
+3. Embedded donation form or prominent link
+4. Monthly giving pitch (their stated priority for donor retention)
+5. Other giving options for planned giving, DAFs, stock, etc.
+6. Transparency section reinforces trust (no government funding, accountable)
+
+**Recommendation:** The donation form should be embedded on-page if possible, not a separate redirect. Every extra click loses donors.
+
+---
 
 ## Hero Section
 
@@ -669,6 +908,20 @@ View Our Financials →
 ---
 
 # 07_STORIES PAGE
+
+## Strategic Note: Stories as Social Proof
+
+**Why this page matters:** Transformation stories are CCRM's most powerful content. They prove the mission works, create emotional connection, and show donors the real impact of their gifts.
+
+**Recommendation:** Invest in gathering and publishing more stories regularly. Consider:
+- Video testimonials (they already have some on YouTube)
+- Written stories with photos
+- "Where are they now" follow-ups with past graduates
+- Donor stories (why supporters give)
+
+**SEO opportunity:** Individual story pages can rank for recovery-related searches and bring organic traffic.
+
+---
 
 ## Hero Section
 
@@ -777,6 +1030,18 @@ Schedule a Tour →
 ---
 
 # 09_FAQ PAGE
+
+## Strategic Note: FAQ Serves Multiple Audiences
+
+**Structure:** FAQs are grouped by audience—people seeking help, donors, volunteers, and general questions about the Mission. This helps visitors quickly find answers relevant to them.
+
+**For people seeking help:** We address common barriers to entry: no ID needed, chapel not required, children welcome. These answers can reduce hesitation and get people in the door.
+
+**For donors:** We reinforce stewardship messaging and explain giving options.
+
+**SEO value:** FAQ pages can capture long-tail search queries ("do I need ID for homeless shelter Albany") and bring qualified traffic.
+
+---
 
 ## Hero Section
 
@@ -1133,6 +1398,14 @@ Give Financially
 ---
 
 # 14_MEDICAL CLINIC PAGE
+
+## Strategic Note: Key Differentiator
+
+**Why this page matters:** The free medical clinic is one of CCRM's strongest differentiators. From the brand messaging: "We are the only provider of free medical care specifically for the homeless" in the Capital Region.
+
+**Recommendation:** This page should be prominent in the Programs dropdown and potentially linked from the homepage. It's a concrete, tangible service that sets CCRM apart from other shelters and appeals to donors who care about healthcare access.
+
+---
 
 ## Hero Section
 
@@ -1677,6 +1950,16 @@ Contact Us With Questions
 
 # 21_CHAPEL SERVICES PAGE
 
+## Strategic Note: Central to Identity
+
+**Why this deserves its own page:** Daily chapel is one of CCRM's most important differentiators—they're "one of the only missions in America" that still holds chapel every day. This is core to their Christ-centered identity and shouldn't be buried.
+
+**Current site issue:** Chapel is listed under "Homeless Services" as if it's just another program. But it's actually central to everything they do and touches every other program.
+
+**Recommendation:** Feature chapel prominently. It appeals to faith-driven donors (their primary audience) and demonstrates CCRM's commitment to spiritual transformation alongside physical care.
+
+---
+
 ## Hero Section
 
 **Headline:**
@@ -1755,8 +2038,8 @@ Give Now
 | Our Story | Emergency Services | Volunteer | Give Online |
 | Leadership | Recovery Programs | Events | Give Monthly |
 | Financials | Medical Clinic | Pray | Legacy Giving |
-| Stories | Learning Center | Careers | Donate Goods |
-| FAQ | | | |
+| Stories | Learning Center | Subscribe | Donate Goods |
+| FAQ | | Careers | |
 | Contact | | | |
 | Newsletters | | | |
 

@@ -8,6 +8,33 @@
 </head>
 <body>
 
+  <!-- Password Gate -->
+  <div id="passwordGate" class="password-gate">
+    <div class="password-form">
+      <h2>Wireframe Preview</h2>
+      <p>Enter password to view this site</p>
+      <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter')checkPassword()">
+      <button onclick="checkPassword()">Enter</button>
+      <p id="passwordError" class="error">Incorrect password</p>
+    </div>
+  </div>
+  <script>
+    (function() {
+      var PASS = 'ccrm2025';
+      if (localStorage.getItem('wireframe_auth') === 'true') {
+        document.getElementById('passwordGate').classList.add('hidden');
+      }
+      window.checkPassword = function() {
+        if (document.getElementById('passwordInput').value === PASS) {
+          localStorage.setItem('wireframe_auth', 'true');
+          document.getElementById('passwordGate').classList.add('hidden');
+        } else {
+          document.getElementById('passwordError').classList.add('show');
+        }
+      };
+    })();
+  </script>
+
   <header class="site-header">
     <div class="header-inner">
       <a href="../index.html" class="logo">Capital City Rescue Mission</a>

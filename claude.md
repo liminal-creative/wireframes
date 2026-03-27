@@ -6,6 +6,52 @@ This repository contains clickable HTML/CSS wireframe prototypes for nonprofit w
 
 Wireframes allow clients to review and approve website content in context before moving into design. They can click through pages, read copy, and understand site structure without getting distracted by colors, fonts, or visual design decisions.
 
+## Strategic Notes & Design Decisions
+
+Content documents include "Strategic Note" sections that explain key decisions—why we structured something a certain way, what problem it solves, or recommendations for the client.
+
+**These should be visually distinct from page content.** Display them as:
+
+### Option A: Inline Callout Boxes
+- Light blue background (#EBF5FF) with blue left border (#2563EB)
+- Small "💡 Strategic Note" or "🎯 Design Decision" label
+- Slightly smaller text than body copy
+- Clearly separate from the actual page content
+
+### Option B: Toggleable Insights
+- Small icon or button in the corner of relevant sections
+- Clicking reveals a popover/tooltip with the strategic note
+- Allows client to view the wireframe "clean" or with insights visible
+- Include a global toggle: "Show/Hide Strategic Notes"
+
+### Option C: Sidebar Notes
+- Strategic notes appear in a right sidebar alongside the relevant section
+- Similar to comments in Google Docs
+- Keeps page content clean while notes remain visible
+
+**Recommended approach:** Option A (inline callouts) for simplicity, with a toggle at the top of each page to show/hide all notes. This lets clients review content both ways—with context, and as users would see it.
+
+### Styling for Strategic Notes
+```css
+.strategic-note {
+  background: #EBF5FF;
+  border-left: 4px solid #2563EB;
+  padding: 16px 20px;
+  margin: 24px 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.strategic-note-label {
+  font-weight: bold;
+  color: #2563EB;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+```
+
 ## Technical Approach
 
 ### Stack
@@ -68,9 +114,9 @@ Follow the content exactly. Do not add, remove, or rewrite copy.
 
 Use gray boxes with centered text labels:
 ```html
-<div class="placeholder-image">[Photo]</div>
-<div class="placeholder-image">[Image]</div>
-<div class="placeholder-image">[Headshot]</div>
+[Photo]
+[Image]
+[Headshot]
 ```
 
 ## Deliverable
