@@ -14,6 +14,7 @@
       <h2>Wireframe Preview</h2>
       <p>Enter password to view this site</p>
       <input type="password" id="passwordInput" placeholder="Password" onkeypress="if(event.key==='Enter')checkPassword()">
+      <label class="show-password"><input type="checkbox" onchange="togglePassword()"> Show password</label>
       <button onclick="checkPassword()">Enter</button>
       <p id="passwordError" class="error">Incorrect password</p>
     </div>
@@ -31,6 +32,10 @@
         } else {
           document.getElementById('passwordError').classList.add('show');
         }
+      };
+      window.togglePassword = function() {
+        var input = document.getElementById('passwordInput');
+        input.type = input.type === 'password' ? 'text' : 'password';
       };
     })();
   </script>

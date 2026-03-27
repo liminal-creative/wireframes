@@ -869,9 +869,25 @@ section.alt {
   color: #666;
 }
 
-.password-form input[type="password"]:focus {
+.password-form input[type="password"]:focus,
+.password-form input[type="text"]:focus {
   outline: none;
-  border-color: #FFE802;
+  box-shadow: 0 0 0 2px #FFE802;
+}
+
+.password-form .show-password {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  color: #FFFFFF;
+  font-size: 0.875rem;
+}
+
+.password-form .show-password input {
+  width: auto;
+  margin: 0;
 }
 
 .password-form button {
