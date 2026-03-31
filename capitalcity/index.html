@@ -27,40 +27,56 @@
         <div class="two-col">
           <div>
             <h2>More Than a Meal. A New Beginning.</h2>
-            <p>Every night in Albany, hundreds of people sleep outside—trapped in cycles of homelessness, addiction, and poverty. We provide more than emergency relief. Through recovery programs, daily meals, free medical care, and Christ-centered guidance, we walk with people from their darkest moments to lasting independence.</p>
+            <p>Every night in Albany, hundreds of people sleep outside, trapped in cycles of homelessness, addiction, and poverty. We provide more than emergency relief. Through recovery programs, daily meals, free medical care, and Christ-centered guidance, we walk with people from their darkest moments to lasting independence.</p>
           </div>
           <div class="placeholder-image large">[Photo]</div>
         </div>
       </div>
     </section>
 
-    <!-- Programs Section -->
-    <section class="alt">
-      <div class="container">
-        <div class="section-header">
-          <h2>Comprehensive Care for Complete Transformation</h2>
-          <p>From the first meal to independent living, we journey with people through every step of recovery.</p>
+    <!-- Programs Section - Sticky Scroll -->
+    <div class="programs-scroll-runway">
+      <section class="programs-sticky alt">
+        <div class="container">
+          <div class="section-header">
+            <h2>Comprehensive Care for Complete Transformation</h2>
+            <p>From the first meal to independent living, we journey with people through every step of recovery.</p>
+          </div>
+          <div class="programs-display">
+            <div class="programs-image">
+              <div class="programs-image-placeholder" data-index="0" style="background:#D0D0D0">[Photo: Emergency Services]</div>
+              <div class="programs-image-placeholder" data-index="1" style="background:#B0B0B0">[Photo: Recovery Programs]</div>
+              <div class="programs-image-placeholder" data-index="2" style="background:#909090">[Photo: Transitional Living]</div>
+              <div class="programs-image-placeholder" data-index="3" style="background:#707070; color:#ccc">[Photo: Support Services]</div>
+            </div>
+            <div class="programs-content">
+              <div class="programs-content-item" data-index="0">
+                <h3>Emergency Services</h3>
+                <p>Three daily meals, safe shelter for men and women, free clothing, and medical care for the uninsured—meeting immediate needs with dignity and compassion.</p>
+              </div>
+              <div class="programs-content-item" data-index="1">
+                <h3>Recovery Programs</h3>
+                <p>Nine-month and year-long residential programs help men and women overcome addiction through pastoral counseling, life skills training, and Christ-centered community.</p>
+              </div>
+              <div class="programs-content-item" data-index="2">
+                <h3>Transitional Living</h3>
+                <p>Forty-three studio apartments provide stable housing for program graduates as they secure employment and build toward permanent independence.</p>
+              </div>
+              <div class="programs-content-item" data-index="3">
+                <h3>Support Services</h3>
+                <p>GED preparation, job readiness training, and daily chapel services equip guests with skills and spiritual grounding for lasting success.</p>
+              </div>
+            </div>
+          </div>
+          <div class="programs-dots">
+            <button class="programs-dot active" data-index="0" aria-label="Emergency Services"></button>
+            <button class="programs-dot" data-index="1" aria-label="Recovery Programs"></button>
+            <button class="programs-dot" data-index="2" aria-label="Transitional Living"></button>
+            <button class="programs-dot" data-index="3" aria-label="Support Services"></button>
+          </div>
         </div>
-        <div class="card-grid">
-          <div class="card">
-            <h3>Emergency Services</h3>
-            <p>Three daily meals, safe shelter for men and women, free clothing, and medical care for the uninsured—meeting immediate needs with dignity and compassion.</p>
-          </div>
-          <div class="card">
-            <h3>Recovery Programs</h3>
-            <p>Nine-month and year-long residential programs help men and women overcome addiction through pastoral counseling, life skills training, and Christ-centered community.</p>
-          </div>
-          <div class="card">
-            <h3>Transitional Living</h3>
-            <p>Forty-three studio apartments provide stable housing for program graduates as they secure employment and build toward permanent independence.</p>
-          </div>
-          <div class="card">
-            <h3>Support Services</h3>
-            <p>GED preparation, job readiness training, and daily chapel services equip guests with skills and spiritual grounding for lasting success.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
     <!-- Featured Campaigns Section -->
     <section class="section-with-note">
@@ -239,6 +255,75 @@
         document.body.style.overflow = '';
       }
     });
+  </script>
+
+  <!-- Programs Sticky Scroll -->
+  <script>
+    (function() {
+      var runway = document.querySelector('.programs-scroll-runway');
+      if (!runway) return;
+
+      var totalItems = 4;
+      var images = runway.querySelectorAll('.programs-image-placeholder');
+      var contents = runway.querySelectorAll('.programs-content-item');
+      var dots = runway.querySelectorAll('.programs-dot');
+      var currentIndex = 0;
+
+      function setActive(index) {
+        if (index === currentIndex) return;
+        currentIndex = index;
+        images.forEach(function(el) { el.classList.toggle('active', +el.dataset.index === index); });
+        contents.forEach(function(el) { el.classList.toggle('active', +el.dataset.index === index); });
+        dots.forEach(function(el) { el.classList.toggle('active', +el.dataset.index === index); });
+      }
+
+      // Initialize first item
+      setActive(0);
+      currentIndex = -1; // force first setActive
+      setActive(0);
+
+      // Dot clicks scroll to appropriate position
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          var index = +this.dataset.index;
+          var runwayRect = runway.getBoundingClientRect();
+          var runwayTop = window.scrollY + runwayRect.top;
+          var scrollableHeight = runway.offsetHeight - window.innerHeight;
+          var targetScroll = runwayTop + (scrollableHeight * index / (totalItems - 1));
+          window.scrollTo({ top: targetScroll, behavior: 'smooth' });
+        });
+      });
+
+      function onScroll() {
+        var runwayRect = runway.getBoundingClientRect();
+        var runwayTop = runwayRect.top;
+        var scrollableHeight = runway.offsetHeight - window.innerHeight;
+
+        // How far we've scrolled into the runway (0 = top pinned, 1 = about to unpin)
+        var progress = -runwayTop / scrollableHeight;
+        progress = Math.max(0, Math.min(1, progress));
+
+        // Map progress to item index
+        var index = Math.min(totalItems - 1, Math.floor(progress * totalItems));
+        setActive(index);
+      }
+
+      // Check if we should use sticky behavior (desktop only)
+      function checkMobile() {
+        if (window.innerWidth <= 768) {
+          window.removeEventListener('scroll', onScroll);
+          // Show all on mobile
+          images.forEach(function(el) { el.classList.add('active'); });
+          contents.forEach(function(el) { el.classList.add('active'); });
+        } else {
+          window.addEventListener('scroll', onScroll, { passive: true });
+          onScroll();
+        }
+      }
+
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+    })();
   </script>
 
   <script src="js/site-footer.js"></script>
