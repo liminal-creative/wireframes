@@ -152,11 +152,11 @@ body {
 }
 
 .intro .lead {
-  font-size: 1.25rem;
-  color: var(--gray-500);
-  max-width: 640px;
+  font-size: 1.125rem;
+  color: var(--gray-700);
+  max-width: 800px;
   margin: 0 auto;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 /* ============================================
