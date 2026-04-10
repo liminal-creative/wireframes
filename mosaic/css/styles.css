@@ -1,0 +1,436 @@
+/* Liminal Proposal - Mosaic Mennonite Conference */
+
+:root {
+  --yellow: #FFE500;
+  --yellow-dark: #E6CE00;
+  --magenta: #990066;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray-50: #FAFAFA;
+  --gray-100: #F5F5F5;
+  --gray-200: #E5E5E5;
+  --gray-300: #D4D4D4;
+  --gray-500: #737373;
+  --gray-700: #404040;
+  --gray-900: #171717;
+
+  /* Card backgrounds */
+  --card-bg-starter: #FAFAFA;
+  --card-bg-featured: #FFFCEB;
+  --card-bg-premium: #FCF5FA;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--gray-900);
+  background: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 80px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -10%;
+  width: 400px;
+  height: 400px;
+  background: var(--yellow);
+  border-radius: 50%;
+  opacity: 0.1;
+  filter: blur(100px);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background: var(--yellow);
+  border-radius: 50%;
+  opacity: 0.08;
+  filter: blur(80px);
+}
+
+.logo {
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.liminal-logo {
+  height: 72px;
+  width: auto;
+}
+
+/* Placeholder if no logo image */
+.logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.logo-placeholder .bracket {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 48px;
+  background: var(--yellow);
+  border-radius: 6px;
+  color: var(--black);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero .meta {
+  font-size: 1.125rem;
+  color: var(--gray-300);
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   INTRO SECTION
+   ============================================ */
+
+.intro {
+  padding: 80px 0;
+  text-align: center;
+  background: var(--white);
+}
+
+.intro h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  margin-bottom: 16px;
+  color: var(--black);
+}
+
+.intro .lead {
+  font-size: 1.25rem;
+  color: var(--gray-500);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ============================================
+   PRICING SECTION
+   ============================================ */
+
+.pricing {
+  padding: 0 0 100px;
+  background: var(--white);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+@media (max-width: 1024px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .card-header h3 {
+    min-height: auto;
+  }
+
+  .choose-if {
+    min-height: auto;
+  }
+}
+
+/* ============================================
+   PRICING CARDS
+   ============================================ */
+
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: 16px;
+  padding: 40px 32px;
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Featured card styling */
+.pricing-card.featured {
+  border: 2px solid var(--yellow);
+  box-shadow: 0 8px 32px rgba(255, 229, 0, 0.15);
+}
+
+.pricing-card.featured:hover {
+  box-shadow: 0 20px 48px rgba(255, 229, 0, 0.2);
+}
+
+.card-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--yellow);
+  color: var(--black);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 6px 16px;
+  border-radius: 100px;
+}
+
+/* Starter card - neutral gray */
+.pricing-card.starter {
+  background: var(--card-bg-starter);
+}
+
+.pricing-card.starter .choose-if {
+  border-left-color: var(--gray-400);
+}
+
+.pricing-card.starter .deliverable-group li::before {
+  background: var(--gray-400);
+}
+
+/* Featured card - warm yellow tint */
+.pricing-card.featured {
+  background: var(--card-bg-featured);
+}
+
+/* Premium card - subtle magenta tint */
+.pricing-card.premium {
+  background: var(--card-bg-premium);
+  border-color: #F0E0EC;
+}
+
+.pricing-card.premium:hover {
+  box-shadow: 0 20px 48px rgba(153, 0, 102, 0.08);
+}
+
+.pricing-card.premium .choose-if {
+  border-left-color: var(--magenta);
+}
+
+.pricing-card.premium .deliverable-group li::before {
+  background: var(--magenta);
+}
+
+/* Card header */
+.card-header {
+  margin-bottom: 24px;
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  margin-bottom: 16px;
+  color: var(--black);
+  min-height: 60px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.price {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: var(--black);
+}
+
+/* Choose if section */
+.choose-if {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.6;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: var(--white);
+  border-radius: 12px;
+  border-left: 4px solid var(--yellow);
+  min-height: 180px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.choose-if strong {
+  color: var(--gray-900);
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+/* Deliverables */
+.deliverables h4 {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gray-400);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.deliverable-group {
+  margin-bottom: 20px;
+}
+
+.deliverable-group:last-child {
+  margin-bottom: 0;
+}
+
+.deliverable-group h5 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-400);
+  margin-bottom: 6px;
+}
+
+.deliverable-group p {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
+.deliverable-group ul {
+  list-style: none;
+  padding: 0;
+}
+
+.deliverable-group li {
+  font-size: 0.9375rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 6px;
+}
+
+.deliverable-group li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--yellow);
+  border-radius: 50%;
+}
+
+.pricing-card.premium .deliverable-group li::before {
+  background: var(--yellow);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  padding: 60px 0;
+  background: var(--gray-50);
+  text-align: center;
+  border-top: 1px solid var(--gray-200);
+}
+
+.footer .confidential {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-bottom: 12px;
+}
+
+.footer .copyright {
+  font-size: 0.875rem;
+  color: var(--gray-500);
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 60px 0;
+  }
+
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .intro {
+    padding: 60px 0;
+  }
+
+  .pricing {
+    padding: 0 0 60px;
+  }
+
+  .pricing-card {
+    padding: 24px;
+  }
+
+  .price {
+    font-size: 2rem;
+  }
+}
