@@ -243,9 +243,6 @@ body {
   border-left-color: var(--gray-400);
 }
 
-.pricing-card.starter .deliverable-group li::before {
-  background: var(--gray-400);
-}
 
 /* Featured card - warm yellow tint */
 .pricing-card.featured {
@@ -266,9 +263,6 @@ body {
   border-left-color: var(--magenta);
 }
 
-.pricing-card.premium .deliverable-group li::before {
-  background: var(--magenta);
-}
 
 /* Card header */
 .card-header {
@@ -348,7 +342,7 @@ body {
 
 .deliverable-group p {
   font-size: 0.9375rem;
-  color: var(--gray-700);
+  color: var(--black);
   line-height: 1.5;
 }
 
@@ -359,7 +353,7 @@ body {
 
 .deliverable-group li {
   font-size: 0.9375rem;
-  color: var(--gray-700);
+  color: var(--black);
   line-height: 1.5;
   padding-left: 20px;
   position: relative;
@@ -373,13 +367,10 @@ body {
   top: 10px;
   width: 6px;
   height: 6px;
-  background: var(--yellow);
+  background: var(--black);
   border-radius: 50%;
 }
 
-.pricing-card.premium .deliverable-group li::before {
-  background: var(--yellow);
-}
 
 /* ============================================
    FOOTER
