@@ -240,6 +240,12 @@ section.alt {
   gap: 30px;
 }
 
+.card-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
 @media (max-width: 900px) {
   .card-grid-3 {
     grid-template-columns: repeat(2, 1fr);
@@ -247,7 +253,8 @@ section.alt {
 }
 
 @media (max-width: 600px) {
-  .card-grid-3 {
+  .card-grid-3,
+  .card-grid-2 {
     grid-template-columns: 1fr;
   }
 }
@@ -256,6 +263,20 @@ section.alt {
   background: #FFFFFF;
   border: 1px solid #D0D0D0;
   padding: 30px;
+}
+
+a.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+a.card:hover {
+  border-color: #2563EB;
+}
+
+a.card h3 {
+  color: #2563EB;
 }
 
 .card .placeholder-image {
