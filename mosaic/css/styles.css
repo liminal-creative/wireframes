@@ -159,6 +159,19 @@ body {
   line-height: 1.8;
 }
 
+.intro .revision-note {
+  max-width: 800px;
+  margin: 24px auto 0;
+  padding: 16px 24px;
+  background: var(--card-bg-featured);
+  border: 1px solid var(--yellow);
+  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  text-align: left;
+}
+
 /* ============================================
    PRICING SECTION
    ============================================ */
@@ -232,6 +245,7 @@ body {
   letter-spacing: 0.5px;
   padding: 6px 16px;
   border-radius: 100px;
+  white-space: nowrap;
 }
 
 /* Starter card - neutral gray */
@@ -371,6 +385,27 @@ body {
   border-radius: 50%;
 }
 
+
+.phase-two {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px dashed var(--gray-300);
+}
+
+.phase-two h5 {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--gray-500);
+  margin-bottom: 6px;
+}
+
+.phase-two p {
+  font-size: 0.875rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
 
 /* ============================================
    FOOTER
