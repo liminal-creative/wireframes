@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proposal for {{CLIENT_NAME}} | Liminal</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container">
+      <div class="logo">
+        <img src="https://share.meetliminal.com/assets/logo-white.png" alt="Liminal" class="liminal-logo">
+      </div>
+      <h1>Proposal for {{CLIENT_NAME}}</h1>
+      <p class="meta">{{MONTH_YEAR}}</p> <!-- On a revision: "Revised {{MONTH_YEAR}}" -->
+    </div>
+  </header>
+
+  <!-- Intro Section -->
+  <section class="intro">
+    <div class="container">
+      <h2>Three paths forward</h2>
+      <p class="lead">{{INTRO_LEAD — reframe what they asked for, then one sentence per path. Example: "You asked for a new website. But a website is only as strong as what it's built on—your messaging, your visual identity, and your capacity to keep it current. We've outlined three paths forward so you can see the range of ways we might work together. The first focuses on the site itself. The second strengthens the foundation beneath it. The third gives you a strategic partner for the long haul."}}</p>
+
+      <!-- OPTIONAL: revision note — enable when resending after budget feedback
+      <p class="revision-note"><strong>What's changed:</strong> Based on your feedback, we've reworked the middle option—{{WHAT_CHANGED}}—to bring the investment to {{NEW_PRICE}}.</p>
+      -->
+    </div>
+  </section>
+
+  <!-- Pricing Cards -->
+  <section class="pricing">
+    <div class="container">
+      <div class="pricing-grid">
+
+        <!-- Tier 1: minimum credible option -->
+        <div class="pricing-card starter">
+          <div class="card-header">
+            <h3>{{TIER1_NAME}}</h3>
+            <div class="price">{{TIER1_PRICE}}</div>
+          </div>
+          <p class="choose-if"><strong>Choose if...</strong> {{TIER1_CHOOSE_IF}}</p>
+
+          <div class="deliverables">
+            <h4>Deliverables</h4>
+
+            <div class="deliverable-group">
+              <h5>Messaging</h5>
+              <p>{{TIER1_MESSAGING}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Scope</h5>
+              <p>{{TIER1_SCOPE}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Editing</h5>
+              <p>Flexible Page Builder Implementation</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Additional Features</h5>
+              <ul>
+                <li>{{TIER1_FEATURE}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tier 2: recommended, includes every client-named must-have -->
+        <div class="pricing-card featured">
+          <div class="card-badge">Recommended</div> <!-- On a revision: "Revised &amp; Recommended" -->
+          <div class="card-header">
+            <h3>{{TIER2_NAME}}</h3>
+            <div class="price">{{TIER2_PRICE}}</div>
+          </div>
+          <p class="choose-if"><strong>Choose if...</strong> {{TIER2_CHOOSE_IF}}</p>
+
+          <div class="deliverables">
+            <h4>Deliverables</h4>
+
+            <div class="deliverable-group">
+              <h5>Messaging</h5>
+              <p>{{TIER2_MESSAGING}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Scope</h5>
+              <p>{{TIER2_SCOPE}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Editing</h5>
+              <p>Flexible Page Builder Implementation</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Additional Features</h5>
+              <ul>
+                <li>{{TIER2_FEATURE_1}}</li>
+                <li>{{TIER2_FEATURE_2}}</li>
+                <li>{{TIER2_FEATURE_3}}</li>
+              </ul>
+            </div>
+
+            <!-- OPTIONAL: phase two — enable when the client hopes for future funding
+            <div class="phase-two">
+              <h5>Phase Two — When Funding Allows</h5>
+              <p>Start with the redesign now. {{DEFERRED_ITEMS}} can be added as a second phase when additional funding is secured.</p>
+            </div>
+            -->
+          </div>
+        </div>
+
+        <!-- Tier 3: full partnership / anchor -->
+        <div class="pricing-card premium">
+          <div class="card-header">
+            <h3>{{TIER3_NAME}}</h3>
+            <div class="price">{{TIER3_PRICE}}</div>
+          </div>
+          <p class="choose-if"><strong>Choose if...</strong> {{TIER3_CHOOSE_IF}}</p>
+
+          <div class="deliverables">
+            <h4>Deliverables</h4>
+
+            <div class="deliverable-group">
+              <h5>Messaging</h5>
+              <p>{{TIER3_MESSAGING}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Scope</h5>
+              <p>{{TIER3_SCOPE}}</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Website Editing</h5>
+              <p>Flexible Page Builder Implementation</p>
+            </div>
+
+            <div class="deliverable-group">
+              <h5>Additional Features</h5>
+              <ul>
+                <li>{{TIER3_FEATURE_1}}</li>
+                <li>{{TIER3_FEATURE_2}}</li>
+                <li>{{TIER3_FEATURE_3}}</li>
+                <li>{{TIER3_FEATURE_4}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="confidential">Prepared for {{CLIENT_NAME}}</p>
+      <p class="copyright">Copyright © {{YEAR}} Liminal Creative, Inc<br>Confidential. For internal use only.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
