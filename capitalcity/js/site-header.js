@@ -38,6 +38,9 @@
             <a href="${basePath}programs.html">Programs</a>
           </div>
           <div class="nav-item">
+            <a href="${basePath}get-help.html">Get Help</a>
+          </div>
+          <div class="nav-item">
             <a href="${basePath}get-involved.html">Get Involved</a>
             <div class="dropdown">
               <a href="${basePath}get-involved.html#volunteer">Volunteer</a>
@@ -49,9 +52,6 @@
           </div>
         </div>
         <div class="nav-right">
-          <div class="nav-item">
-            <a href="${basePath}get-help.html">Get Help</a>
-          </div>
           <div class="nav-item">
             <a href="${basePath}give.html">Ways to Give</a>
           </div>
