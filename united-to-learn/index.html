@@ -43,6 +43,16 @@ letter-spacing:-0.02em;
 line-height:1.02;
 }
 
+/* No orphans: never leave a single word alone on a last line.
+   'pretty' pulls a word down from the line above; 'balance' evens out
+   short headings. Both degrade to normal wrapping where unsupported. */
+p, li, .declaration, .tier-desc, .hero-sub, .tag, .eyebrow{
+text-wrap:pretty;
+}
+h1, h2, h3{
+text-wrap:balance;
+}
+
 a{color:inherit; text-decoration:none;}
 a:focus-visible, button:focus-visible{outline:2px solid var(--eggplant); outline-offset:3px;}
 
@@ -264,9 +274,9 @@ display:block;
 margin-bottom:12px;
 }
 .card h3{
-font-size:20px;
+font-size:18px;
 margin-bottom:10px;
-letter-spacing:-0.01em;
+letter-spacing:-0.015em;
 }
 .card p{font-size:17px; max-width:none;}
 
@@ -331,7 +341,9 @@ margin-bottom:10px;
 /* pricing */
 .tier-row{
 display:grid;
-grid-template-columns:repeat(3, 1fr);
+/* auto-fit rather than a fixed 3-up: the tier headings set a real minimum
+   width, so the row drops to 2-up and then 1-up instead of overflowing. */
+grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
 gap:20px;
 margin-top:48px;
 }
@@ -358,7 +370,7 @@ padding:4px 10px;
 border-radius:3px;
 letter-spacing:0;
 }
-.tier h3{font-size:21px; margin-bottom:6px; letter-spacing:-0.01em;}
+.tier h3{font-size:19px; margin-bottom:6px; letter-spacing:-0.015em;}
 .tier .price{
 font-size:38px;
 font-weight:900;
@@ -430,6 +442,15 @@ font-weight:700;
 .closing .role a{color:#a09aa0;}
 .closing .role a:hover{color:var(--yellow);}
 
+/* Very narrow phones: the bound word pairs set a minimum content width,
+   so trim padding and heading size rather than let cards run past the edge. */
+@media (max-width: 400px){
+.card{padding:18px;}
+.tier{padding:26px 18px;}
+.card h3{font-size:17px;}
+.tier h3{font-size:18px;}
+}
+
 @media (max-width: 860px){
 .card-row, .card-row.two, .tier-row{grid-template-columns:1fr;}
 .letter{padding:32px;}
@@ -466,11 +487,11 @@ section.block{padding:64px 24px;}
 <div class="letter">
 <p>We&rsquo;re excited about the opportunity to help you tell the story of what&rsquo;s next: a ten-year milestone, a new strategic plan, and a likely merger, folded into one confident narrative.</p>
 <p>At Liminal, we respect what you&rsquo;ve built since 2017. Activating community investment so educators and students thrive is serious work, and it shows in how your community talks about you. Ten years in, you&rsquo;ve earned a real sense of permanence, not just tenure.</p>
-<p>Now you&rsquo;re heading into a moment that will ask more of your communications than ever before. A likely merger will expand what United to Learn does and who it serves, just as you mark a decade of work and set direction for the next one. That kind of change needs a narrative that holds all of it together and can flex as details come into focus. We&rsquo;re ready to help build that narrative and put it to work through:</p>
+<p>Now you&rsquo;re heading into a moment that will ask more of your communications than ever before. A likely merger will expand what United to Learn does and who it serves, just as you mark a decade of work and set direction for the next one. That kind of change needs a narrative that holds all of it together and can flex as details come into focus. We&rsquo;re ready to help build that narrative and put it to work through:</p>
 <ul>
 <li>A unified messaging framework connecting your strategic plan to the merger rationale</li>
 <li>An audience-specific communications approach for educators, investors, volunteers, and staff</li>
-<li>Hands-on execution support so your team can stay focused while this unfolds</li>
+<li>Hands-on execution support so your team can stay focused while this unfolds</li>
 </ul>
 <p>We&rsquo;ve helped organizations like Lift Up the Vulnerable, NPower, Mathkind, and Dream Center NYC clarify complicated stories and bring their staff and communities along with them. We know how to move quickly without losing precision, which matters here since some of the details are still taking shape.</p>
 <p>This isn&rsquo;t a project we&rsquo;ll hand off and walk away from. It&rsquo;s a partnership we&rsquo;ll stay in through the announcement and beyond, until the story is landing the way it should.</p>
@@ -487,17 +508,17 @@ section.block{padding:64px 24px;}
 <div class="card-row">
 <div class="card">
 <span class="num mono">01</span>
-<h3>Unsettled merger details</h3>
+<h3>Unsettled merger details</h3>
 <p>Key facts about the merger, including timing and structure, remain confidential and unresolved, making it hard to build messaging that won&rsquo;t need to change.</p>
 </div>
 <div class="card">
 <span class="num mono">02</span>
-<h3>Four distinct audiences</h3>
-<p>Educators, investors, volunteers, and staff each need a different version of the story, with staff facing the most immediate questions about jobs and structure.</p>
+<h3>Four distinct audiences</h3>
+<p>Educators, investors, volunteers, and staff each need a different version of the story, with staff facing the most immediate questions about jobs and structure.</p>
 </div>
 <div class="card">
 <span class="num mono">03</span>
-<h3>Stretched internal team</h3>
+<h3>Stretched internal team</h3>
 <p>A four-person communications team is already managing day-to-day work and will need outside support once merger communications and a strategic plan rollout begin.</p>
 </div>
 </div>
@@ -511,7 +532,7 @@ section.block{padding:64px 24px;}
 <div class="card-row two">
 <div class="card">
 <span class="num mono">01</span>
-<h3>Unified narrative framework</h3>
+<h3>Unified narrative framework</h3>
 <p>One story that ties your ten-year milestone, strategic plan, and merger rationale together for every audience.</p>
 </div>
 <div class="card">
@@ -522,12 +543,12 @@ section.block{padding:64px 24px;}
 <div class="card">
 <span class="num mono">03</span>
 <h3>Hands-on execution support</h3>
-<p>Newsletters, press materials, and internal updates drafted and ready so your team isn&rsquo;t stretched thin.</p>
+<p>Newsletters, press materials, and internal updates drafted and ready so your team isn&rsquo;t stretched thin.</p>
 </div>
 <div class="card">
 <span class="num mono">04</span>
-<h3>Announcement readiness planning</h3>
-<p>Preparation for leadership and staff, including anticipated questions and a plan for the rollout sequence.</p>
+<h3>Announcement readiness planning</h3>
+<p>Preparation for leadership and staff, including anticipated questions and a plan for the rollout sequence.</p>
 </div>
 </div>
 </section>
@@ -540,17 +561,17 @@ section.block{padding:64px 24px;}
 <div class="card-row">
 <div class="card">
 <span class="num mono">Internal</span>
-<h3>Confident staff communication</h3>
+<h3>Confident staff communication</h3>
 <p>Employees understand what&rsquo;s changing and why before external announcements happen, so questions get answered instead of guessed at.</p>
 </div>
 <div class="card">
 <span class="num mono">External</span>
-<h3>Trusted external positioning</h3>
-<p>Educators, investors, and volunteers understand the value of the combined organization and see the merger as a sign of strength, not disruption.</p>
+<h3>Trusted external positioning</h3>
+<p>Educators, investors, and volunteers understand the value of the combined organization and see the merger as a sign of strength, not disruption.</p>
 </div>
 <div class="card">
 <span class="num mono">Durable</span>
-<h3>Flexible communications architecture</h3>
+<h3>Flexible communications architecture</h3>
 <p>A messaging framework and materials library that adapts as transaction details change, instead of starting over each time.</p>
 </div>
 </div>
@@ -568,7 +589,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <span class="num mono">Phase 01 &bull; Weeks 1&ndash;5</span>
 <h3>Discovery and research</h3>
 <ul>
-<li>8 to 12 stakeholder interviews with senior leadership, the board chair, and, where possible, incoming leadership from the merging organization.</li>
+<li>8 to 12 stakeholder interviews with senior leadership, the board chair, and, where possible, incoming leadership from the merging organization.</li>
 <li>Interviews with your five program and service leads, for roughly 16 to 20 conversations total.</li>
 <li>One to two focus groups with educators and community members.</li>
 <li>Review of your strategic plan, existing messaging, and current communications materials.</li>
@@ -581,7 +602,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <li>A brand messaging guide: positioning, narrative, value propositions, and proof points.</li>
 <li>Merger rationale language written to hold up as details are finalized.</li>
 <li>Audience-specific message maps for educators, investors, volunteers, and staff.</li>
-<li>Anticipated questions and answers for leadership and staff conversations.</li>
+<li>Anticipated questions and answers for leadership and staff conversations.</li>
 </ul>
 </div>
 <div class="include-group">
@@ -607,7 +628,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <!-- 06 — PROPOSED TIMELINE -->
 <section class="block" id="timeline">
 <span class="section-label mono">06 &mdash; Proposed Timeline</span>
-<h2>What Happens When</h2>
+<h2>What Happens When</h2>
 <p>A four to five month engagement, starting mid-to-late September, so you&rsquo;re ready for external communications in January 2027.</p>
 <div class="card-row">
 <div class="card">
@@ -618,7 +639,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <div class="card">
 <span class="num mono">Oct &ndash; Nov</span>
 <h3>Messaging</h3>
-<p>Narrative and messaging framework drafted, reviewed, and approved by leadership.</p>
+<p>Narrative and messaging framework drafted, reviewed, and approved by leadership.</p>
 </div>
 <div class="card">
 <span class="num mono">Nov &ndash; Dec</span>
@@ -630,7 +651,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <div class="card">
 <span class="num mono">Dec</span>
 <h3>Readiness</h3>
-<p>Leadership and staff preparation, anticipated questions, and rollout sequencing.</p>
+<p>Leadership and staff preparation, anticipated questions, and rollout sequencing.</p>
 </div>
 <div class="card">
 <span class="num mono">Jan 2027</span>
@@ -638,7 +659,7 @@ Visual identity and website updates are a natural next step once the merger deta
 <p>External communications go live. We stay in it with you through the window.</p>
 </div>
 </div>
-<div class="declaration note">Dates shift with the merger timeline. The sequence holds either way &mdash; discovery and messaging can proceed while transaction details are still confidential.</div>
+<div class="declaration note">Dates shift with the merger timeline. The sequence holds either way &mdash; discovery and messaging can proceed while transaction details are still confidential.</div>
 </section>
 
 <!-- 07 — INVESTMENT -->
@@ -648,36 +669,36 @@ Visual identity and website updates are a natural next step once the merger deta
 <p>The right investment depends on how much execution support your team needs once the announcement window opens. We recommend the Announcement Partnership as the best fit for a season with this much change in it.</p>
 <div class="tier-row">
 <div class="tier">
-<h3>Messaging Foundation</h3>
+<h3>Messaging Foundation</h3>
 <div class="price">$18,750</div>
 <span class="annual mono">Tier 01</span>
 <ul>
 <li>Discovery and research</li>
 <li>Unified narrative and messaging framework</li>
-<li>Audience message maps</li>
-<li>Announcement readiness plan</li>
+<li>Audience message maps</li>
+<li>Announcement readiness plan</li>
 </ul>
 </div>
 <div class="tier recommended">
 <span class="rec-tag mono">Recommended</span>
-<h3>Announcement Partnership</h3>
+<h3>Announcement Partnership</h3>
 <div class="price">$27,500</div>
 <span class="annual mono">Tier 02</span>
 <ul>
-<li>Everything in Messaging Foundation</li>
-<li>Internal and external announcement materials</li>
+<li>Everything in Messaging Foundation</li>
+<li>Internal and external announcement materials</li>
 <li>Reusable templates for your team</li>
 <li>Drafting support through the announcement window</li>
 </ul>
 </div>
 <div class="tier">
-<h3>Embedded Comms Team</h3>
+<h3>Embedded Comms Team</h3>
 <div class="price">$42,000</div>
 <span class="annual mono">Tier 03</span>
 <ul>
-<li>Everything in Announcement Partnership</li>
-<li>Ongoing newsletter, press, and internal comms production</li>
-<li>Monthly strategy sessions through the transition</li>
+<li>Everything in Announcement Partnership</li>
+<li>Ongoing newsletter, press, and internal comms production</li>
+<li>Monthly strategy sessions through the transition</li>
 <li>Brand guardianship as the structure settles</li>
 </ul>
 </div>
@@ -693,10 +714,10 @@ Visual identity and website updates are a natural next step once the merger deta
 <p>Here is where we would start.</p>
 <ul>
 <li>Review the proposal with Tim and anyone else you&rsquo;d like at the table, and tell us which level of support fits.</li>
-<li>Confirm the timeline so discovery can begin mid-to-late September and stay ahead of the announcement.</li>
+<li>Confirm the timeline so discovery can begin mid-to-late September and stay ahead of the announcement.</li>
 <li>Schedule kickoff and identify the first round of interviews, including which merger-side voices can participate.</li>
 </ul>
-<p style="margin-top:28px;">Thank you for considering Liminal. A decade of work deserves a story that carries into the next one, and we&rsquo;d be glad to help you tell it.</p>
+<p style="margin-top:28px;">Thank you for considering Liminal. A decade of work deserves a story that carries into the next one, and we&rsquo;d be glad to help&nbsp;you&nbsp;tell&nbsp;it.</p>
 <div class="signoff">Kemah E. P. Washington, Ed.D.
 <div class="role">Chief Growth Officer, Liminal</div>
 <div class="role"><a href="mailto:kemah@meetliminal.com">kemah@meetliminal.com</a></div>
