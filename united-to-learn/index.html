@@ -205,67 +205,9 @@ max-width:640px;
 
 p + p{margin-top:18px;}
 
-/* split text + photo */
-.split-inner{
-display:flex;
-align-items:flex-start;
-gap:56px;
-margin-bottom:8px;
-}
-.split-inner .split-text{flex:1 1 0; min-width:0;}
-.split-inner .split-text p{max-width:none;}
-.split-inner .split-photo{
-flex:0 0 320px;
-width:320px;
-height:260px;
-border-radius:6px;
-overflow:hidden;
-background:#e7e2e5;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
 
-.wide-photo{
-margin-top:36px;
-width:100%;
-aspect-ratio:21/9;
-border-radius:6px;
-overflow:hidden;
-background:#e7e2e5;
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-}
 
-/* Photo fills the slot and covers the placeholder label once the file exists.
-   If the file is missing the img removes itself and the label shows through. */
-.split-photo img, .wide-photo img{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-}
 
-.photo-note{
-font-family:'IBM Plex Mono', monospace;
-font-size:12px;
-letter-spacing:-0.02em;
-text-transform:uppercase;
-color:#8a8289;
-text-align:center;
-padding:0 20px;
-max-width:none;
-}
-
-@media (max-width: 860px){
-.split-inner{flex-direction:column; align-items:stretch;}
-.split-inner .split-photo{width:100%; height:auto; aspect-ratio:1/1; flex:none;}
-}
 
 /* letter */
 .letter{
@@ -594,12 +536,7 @@ section.block{padding:64px 24px;}
 <section class="block tint" id="future">
 <span class="section-label mono">04 &mdash; Desired Future State</span>
 <h2>Where This Lands</h2>
-<div class="split-inner">
-<div class="split-text">
-<p style="font-size:21px;">United to Learn enters its next decade with a clear, unified story that builds trust across every audience and holds steady through the merger.</p>
-</div>
-<div class="split-photo"><p class="photo-note">Photo &mdash; students or educators</p><img src="photos/mentor.jpg" alt="A United to Learn volunteer working one-on-one with a student" onerror="this.remove()"></div>
-</div>
+<p>United to Learn enters its next decade with a clear, unified story that builds trust across every audience and holds steady through the merger.</p>
 <div class="card-row">
 <div class="card">
 <span class="num mono">Internal</span>
@@ -672,7 +609,6 @@ Visual identity and website updates are a natural next step once the merger deta
 <span class="section-label mono">06 &mdash; Proposed Timeline</span>
 <h2>What Happens When</h2>
 <p>A four to five month engagement, starting mid-to-late September, so you&rsquo;re ready for external communications in January 2027.</p>
-<div class="wide-photo"><p class="photo-note">Photo &mdash; United to Learn classroom or school partnership (wide)</p><img src="photos/classroom.jpg" alt="United to Learn Culture Corps Champions in a Dallas classroom" onerror="this.remove()"></div>
 <div class="card-row">
 <div class="card">
 <span class="num mono">Sep &ndash; Oct</span>
