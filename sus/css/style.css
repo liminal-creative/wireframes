@@ -458,11 +458,12 @@ section.block.dark .phase{border-top-color:rgba(255,255,255,0.35);}
 .phase:first-of-type{margin-top:40px;}
 .phase > h3{
 font-size:clamp(26px,3vw,36px);
-margin-bottom:26px;
+line-height:1.1;
+margin-bottom:28px;
 }
 .phase-cols{
 display:flex;
-gap:48px;
+gap:56px;
 align-items:flex-start;
 }
 .phase-cols > div{flex:1 1 0; min-width:0;}
@@ -474,7 +475,7 @@ letter-spacing:-0.03em;
 font-size:12px;
 color:var(--eggplant);
 display:block;
-margin-bottom:14px;
+margin-bottom:18px;
 }
 section.block.dark .subhead, section.block.brand .subhead{color:var(--yellow);}
 .phase-meta{
