@@ -502,6 +502,38 @@ font-weight:500;
 }
 section.block.dark .meta-chip strong{color:#a9a4a9;}
 .meta-chip .val{font-weight:700; font-size:18px;}
+/* Phase lists match the include-group treatment used elsewhere */
+.phase-cols ul{
+margin:0;
+padding-left:32px;
+max-width:none;
+list-style:none;
+}
+.phase-cols li{
+font-size:17px;
+line-height:1.6;
+margin-bottom:11px;
+padding-left:2px;
+position:relative;
+}
+.phase-cols li:last-child{margin-bottom:0;}
+.phase-cols li::before{
+content:"+";
+position:absolute;
+left:-18px;
+color:var(--eggplant);
+font-weight:700;
+}
+.phase-cols .include-group,
+.phase-cols .include-group:first-of-type{margin-top:28px;}
+.phase-cols > div > .include-group:first-child{margin-top:0;}
+.phase-cols .include-group h3{
+font-size:17px;
+line-height:1.3;
+margin-bottom:11px;
+}
+.phase-cols .include-group ul{max-width:none;}
+.phase-meta{margin-top:36px;}
 .ptable{
 width:100%;
 border-collapse:collapse;
