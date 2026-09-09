@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -466,7 +467,7 @@ section.block.dark .phase{border-top-color:rgba(255,255,255,0.35);}
 .phase > h3{
 font-size:clamp(26px,3vw,36px);
 line-height:1.1;
-margin-bottom:26px;
+margin-bottom:28px;
 }
 .phase-cols{
 display:flex;
@@ -510,6 +511,8 @@ font-weight:500;
 }
 section.block.dark .meta-chip strong{color:#a9a4a9;}
 .meta-chip .val{font-weight:700; font-size:18px;}
+
+/* Phase lists match the include-group treatment used elsewhere */
 .phase-cols ul{
 margin:0;
 padding-left:32px;
@@ -541,6 +544,7 @@ margin-bottom:11px;
 }
 .phase-cols .include-group ul{max-width:none;}
 .phase-meta{margin-top:36px;}
+
 .ptable{
 width:100%;
 border-collapse:collapse;
@@ -588,6 +592,21 @@ font-size:14px;
 margin-bottom:0;
 }
 .include-group p + ul{margin-top:20px;}
+.card .headshot{
+width:100%;
+aspect-ratio:1/1;
+object-fit:cover;
+object-position:center 30%;
+display:block;
+border-radius:4px;
+background:rgba(0,0,0,0.15);
+margin-bottom:18px;
+}
+section.block.brand .declaration{
+background:rgba(255,255,255,0.12);
+color:var(--white);
+border-left-color:var(--yellow);
+}
 .people h2{max-width:14ch;}
 .bio{margin-top:26px;}
 .bio h3{font-size:20px; margin-bottom:6px;}
@@ -651,7 +670,7 @@ max-width:38ch;
 <!-- 02 — THE CHALLENGE -->
 <section class="block dark" id="challenge">
 <span class="section-label mono">02 &mdash; The Challenge</span>
-<h2>The challenge</h2>
+<h2>Six departments, thirty answers</h2>
 <p>S:US does six distinct types of work that connect in practice. The organization does not yet have shared language for how the departments connect, which makes the story hard to tell inside or out.</p>
 <div class="card-row">
 <div class="card">
@@ -675,7 +694,7 @@ max-width:38ch;
 <!-- 03 — THE SOLUTION -->
 <section class="block" id="solution">
 <span class="section-label mono">03 &mdash; The Solution</span>
-<h2>The solution</h2>
+<h2>Messaging first. Design follows.</h2>
 <p>Liminal would work with your team to build a single messaging framework you can use everywhere, and then the design and website would follow.</p>
 <div class="include-group">
 <h3>Listen across departments.</h3>
@@ -698,7 +717,7 @@ max-width:38ch;
 <!-- 04 — DESIRED FUTURE STATE -->
 <section class="block tint" id="future-state">
 <span class="section-label mono">04 &mdash; Desired Future State</span>
-<h2>Desired future state</h2>
+<h2>What this looks like when it works</h2>
 <p>A message every department recognizes, and the materials to put it in front of donors who have never heard of S:US.</p>
 <div class="card-row">
 <div class="card">
@@ -840,7 +859,7 @@ max-width:38ch;
 <!-- 07 — TOTAL -->
 <section class="block tint" id="total">
 <span class="section-label mono">07 &mdash; Total</span>
-<h2>Total</h2>
+<h2>All three phases</h2>
 <table class="ptable">
 <thead>
 <tr><td>Phase</td><td>Investment</td></tr>
@@ -858,7 +877,7 @@ max-width:38ch;
 <!-- 08 — THE LIMINAL ADVANTAGE -->
 <section class="block dark" id="advantage">
 <span class="section-label mono">08 &mdash; The Liminal Advantage</span>
-<h2>The Liminal Advantage</h2>
+<h2>Another way to work together</h2>
 <p><strong>A second option: one year, one monthly number, and design work included.</strong></p>
 <div class="bigprice">$12,000<span class="unit">/month</span></div>
 <span class="annual mono">$144,000 for twelve months</span>
@@ -879,7 +898,7 @@ max-width:38ch;
 <!-- 09 — TIMELINE -->
 <section class="block" id="timeline">
 <span class="section-label mono">09 &mdash; Timeline</span>
-<h2>Timeline</h2>
+<h2>The sequence matters more than the speed</h2>
 <p>Three phases, about a year from kickoff to a live website. The sequence matters more than the speed. Each phase produces the input the next one needs.</p>
 <div class="card-row">
 <div class="card">
@@ -909,16 +928,19 @@ max-width:38ch;
 <p>Everyone listed here works on the project. No handoff to someone you did not meet.</p>
 <div class="card-row">
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/bill-cummings.jpg" alt="Bill Cummings" loading="lazy">
 <span class="num mono">Engagement lead</span>
 <h3>Bill Cummings</h3>
 <p>CEO and Co-Founder. Runs the kickoff session and the leadership interviews, writes the brand strategy, and presents the findings.</p>
 </div>
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/jesica-davanza.jpg" alt="Jesica D'Avanza, MPA, APR" loading="lazy">
 <span class="num mono">Research lead</span>
 <h3>Jesica D'Avanza, MPA, APR</h3>
 <p>Founder of Round Square, our research partner. Two decades of brand and research leadership, including national brand roles in the nonprofit sector. She runs the interviews across your six service areas and writes the audience report.</p>
 </div>
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/kemah-washington.jpg" alt="Kemah Washington, Ed.D." loading="lazy">
 <span class="num mono">Account lead</span>
 <h3>Kemah Washington, Ed.D.</h3>
 <p>Chief Growth Officer. Your primary point of contact from the first call through the final handoff. Keeps the work moving and the scope honest.</p>
@@ -926,16 +948,19 @@ max-width:38ch;
 </div>
 <div class="card-row">
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/hannah-sherk.jpg" alt="Hannah Sherk" loading="lazy">
 <span class="num mono">Messaging</span>
 <h3>Hannah Sherk</h3>
 <p>Content Specialist. Turns what your team said into language they recognize. Writes the core narrative, the service area messaging, and the guide your departments will use.</p>
 </div>
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/cc-esguerra.jpg" alt="CC Esguerra" loading="lazy">
 <span class="num mono">Art direction</span>
 <h3>CC Esguerra</h3>
 <p>Art Director. Leads the visual identity and sets the direction the website design follows.</p>
 </div>
 <div class="card">
+<img class="headshot" src="https://share.meetliminal.com/aperio/assets/images/gracia-zelaya.jpg" alt="Gracia Zelaya" loading="lazy">
 <span class="num mono">Project management</span>
 <h3>Gracia Zelaya</h3>
 <p>Senior Project Manager. Owns the schedule and the interview logistics across six departments, so your team spends its time on substance.</p>
@@ -947,7 +972,7 @@ max-width:38ch;
 <!-- 11 — QUALIFICATIONS -->
 <section class="block" id="qualifications">
 <span class="section-label mono">11 &mdash; Qualifications</span>
-<h2>Qualifications</h2>
+<h2>Where this has worked before</h2>
 <p>Our clients have grown revenue 228% collectively. On average, 35% after one year, 87% after two, and 167% after three. Clear messaging is not the only reason. It is the reason most of them name first.</p>
 <div class="include-group">
 <h3>NPower.</h3>
