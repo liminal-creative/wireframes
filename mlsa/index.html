@@ -133,6 +133,22 @@ flex-wrap:wrap;
 
 .dot-sep{color:var(--eggplant); font-size:17px;}
 
+.download-btn{
+display:inline-flex;
+align-items:center;
+gap:10px;
+align-self:flex-start;
+margin-top:30px;
+padding:14px 22px;
+background:var(--yellow);
+color:var(--black);
+font-size:13px;
+border-radius:4px;
+transition:transform .15s ease, background .15s ease;
+}
+.download-btn::after{content:"\2197"; font-size:15px; line-height:1;}
+.download-btn:hover{background:#FFF35C; transform:translateY(-1px);}
+
 /* ============ SECTIONS ============ */
 section.block{
 padding:96px 48px;
@@ -428,6 +444,167 @@ section.block{padding:64px 24px;}
 .closing{padding:80px 24px;}
 tbody th{white-space:normal;}
 }
+
+/* ============ PRINT ============ */
+@media print{
+@page{size:Letter; margin:0.6in 0.65in 0.75in;}
+
+html,body{background:#FFFFFF;}
+body{
+font-size:10.5pt;
+color:var(--ink);
+print-color-adjust:exact;
+-webkit-print-color-adjust:exact;
+}
+
+.download-btn{display:none;}
+
+/* cover */
+.hero{
+background:#FFFFFF;
+color:var(--ink);
+min-height:0;
+height:8.4in;
+page-break-after:always;
+overflow:visible;
+}
+.nav{
+background:#FFFFFF;
+padding:0 0 20pt;
+border-bottom:1px solid var(--line);
+}
+.logo-img{height:44px;}
+.hero-body{padding:0; max-width:none;}
+.eyebrow{color:var(--eggplant); margin-bottom:20pt;}
+.hero h1{color:var(--ink); font-size:38pt;}
+.hero h1 .accent{color:var(--eggplant);}
+.hero-sub{color:#3a3a3a; font-size:12pt; margin-top:18pt;}
+.hero-footer{color:#5b5b5b; margin-top:22pt;}
+
+/* sections go white and stack without color fills */
+section.block, section.block.dark, section.block.brand, section.block.tint, .closing{
+background:#FFFFFF;
+color:var(--ink);
+max-width:none;
+margin:0;
+padding:22pt 0 0;
+border-top:1px solid var(--line);
+}
+section.block.dark > *, section.block.brand > *, section.block.tint > *{
+max-width:none; margin-left:0; margin-right:0;
+}
+#letter{border-top:none; padding-top:0;}
+
+h2{color:var(--ink); font-size:19pt; margin-bottom:16pt; page-break-after:avoid;}
+h3{color:var(--ink);}
+p, li{color:var(--ink); max-width:none;}
+p{font-size:10.5pt; line-height:1.55;}
+p + p{margin-top:9pt;}
+.section-label{color:var(--eggplant); font-size:9pt; margin-bottom:10pt;}
+
+/* cards and panels */
+.card, .tier, .letter{
+background:#FFFFFF;
+border:1px solid var(--line);
+page-break-inside:avoid;
+break-inside:avoid;
+}
+.letter{padding:20pt; border-radius:4px;}
+.card{padding:14pt;}
+.card h3{font-size:12pt;}
+.card p, .card li{font-size:9.5pt;}
+.card .num{color:var(--eggplant); font-size:8.5pt;}
+.card .link{color:var(--eggplant);}
+.card li::before, .include-group li::before{color:var(--eggplant);}
+/* the paper is narrower than 860px, so the mobile query fires. put the grids back. */
+.card-row{grid-template-columns:repeat(3, 1fr);}
+.card-row.two{grid-template-columns:repeat(2, 1fr);}
+.tier-row{grid-template-columns:repeat(3, 1fr);}
+.card-row, .tier-row{
+gap:10pt;
+margin-top:14pt;
+page-break-inside:avoid;
+break-inside:avoid;
+}
+.card-row + .card-row{margin-top:10pt;}
+p, li{orphans:3; widows:3;}
+
+.include-group{margin-top:18pt; page-break-inside:avoid; break-inside:avoid;}
+.include-group:first-of-type{margin-top:16pt;}
+.include-group h3{font-size:12.5pt; margin-bottom:8pt;}
+.include-group li{font-size:10pt; margin-bottom:5pt;}
+
+.declaration{
+background:#F7F5F3;
+color:var(--ink);
+border:none;
+border-left:3px solid var(--eggplant);
+font-size:11pt;
+padding:14pt 18pt;
+margin-top:18pt;
+max-width:none;
+page-break-inside:avoid;
+break-inside:avoid;
+}
+.declaration.small{font-size:10pt;}
+
+/* team */
+.headshot{width:76px; height:76px; margin-bottom:12pt; filter:grayscale(100%);}
+
+/* tables */
+.table-wrap{margin-top:16pt;}
+table{font-size:10pt; color:var(--ink);}
+thead th{color:var(--eggplant); font-size:8.5pt; padding-bottom:8pt; border-bottom:1.5px solid var(--line);}
+tbody th, tbody td{color:var(--ink); padding:9pt 14pt 9pt 0; border-bottom:1px solid var(--line);}
+tbody th{white-space:normal;}
+tr{page-break-inside:avoid; break-inside:avoid;}
+
+/* pricing */
+.tier{padding:16pt 14pt;}
+.tier h3{font-size:13pt;}
+.tier .price{font-size:24pt; margin:6pt 0 2pt;}
+.tier .phase-label{color:var(--eggplant); margin-bottom:10pt;}
+.tier-desc{font-size:9.5pt; color:var(--ink);}
+
+/* closing */
+.closing{padding:22pt 0 0; text-align:left;}
+.closing-inner{max-width:none; margin:0;}
+.closing h2, .closing .signoff{color:var(--ink);}
+.closing p, .closing li{color:var(--ink);}
+.closing .section-label{color:var(--eggplant);}
+.closing .role{color:#5b5b5b;}
+
+/* neutralize the colored-section rules, which outrank the plain ones */
+section.block.dark h2, section.block.brand h2, section.block.tint h2,
+section.block.dark h3, section.block.brand h3, section.block.tint h3{color:var(--ink);}
+section.block.dark p, section.block.brand p, section.block.tint p{color:var(--ink);}
+section.block.dark .section-label, section.block.brand .section-label{color:var(--eggplant);}
+section.block.dark .card, section.block.brand .card{
+background:#FFFFFF;
+border:1px solid var(--line);
+}
+section.block.dark .card h3, section.block.brand .card h3{color:var(--ink);}
+section.block.dark .card p, section.block.brand .card p{color:var(--ink);}
+section.block.dark .card .num, section.block.brand .card .num{color:var(--eggplant);}
+section.block.dark .card li, section.block.brand .card li{color:var(--ink);}
+section.block.dark .card li::before, section.block.brand .card li::before{color:var(--eggplant);}
+section.block.dark .card a{color:var(--eggplant);}
+section.block.dark .include-group li, section.block.brand .include-group li{color:var(--ink);}
+section.block.dark .include-group li::before, section.block.brand .include-group li::before{color:var(--eggplant);}
+section.block.dark .declaration, section.block.brand .declaration{
+background:#F7F5F3;
+color:var(--ink);
+border:none;
+border-left:3px solid var(--eggplant);
+}
+section.block.dark table{color:var(--ink);}
+section.block.dark thead th{color:var(--eggplant); border-bottom-color:var(--line);}
+section.block.dark tbody td{border-bottom-color:var(--line); color:var(--ink);}
+section.block.dark tbody th{color:var(--ink);}
+
+a{color:var(--ink);}
+}
+
 </style>
 </head>
 <body>
@@ -445,6 +622,7 @@ tbody th{white-space:normal;}
 <div class="hero-footer mono">
 <span>October 2026&ndash;March 2027</span><span class="dot-sep">&bull;</span><span>Liminal</span>
 </div>
+<a class="download-btn mono" href="Liminal-MLSA-Proposal.pdf" target="_blank" rel="noopener">Download PDF</a>
 </div>
 </header>
 
