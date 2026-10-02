@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Generous Life Summit App</title>
+<link rel="icon" href="assets/gl-icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Nunito+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="stage">
+  <aside class="brief">
+    <div class="eyebrow">Liminal &middot; First look</div>
+    <h1>The Summit, in everyone's pocket</h1>
+    <p>A phone app for Summit guests. Everything for the weekend lives in one place, from the schedule to the map to the latest update from the team. Tap around the phone, or jump to a section here.</p>
+    <ul class="index" id="index"></ul>
+    <div class="tag">Sample content for layout only</div>
+  </aside>
+
+  <div class="phone">
+    <div class="screen" id="screen">
+      <div class="notch"></div>
+      <div class="status" id="status"><span>9:41</span><span>&#9679;&#9679;&#9679; &#9646;</span></div>
+      <header class="appbar" id="appbar"></header>
+      <main class="view" id="view"></main>
+      <nav class="tabbar" id="tabbar" aria-label="Main"></nav>
+      <div class="sheet-bg" id="sheetbg"></div>
+      <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+      <div class="toast" id="toast" role="status"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const LOGO = `<svg class="logo" role="img" aria-label="Generous Life" id="MasterLayer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 4490.2 1912.9">
+  
+  <defs>
+    <style>
+      .gl0 {
+        fill-rule: evenodd;
+      }
+
+      .gl0, .gl1 {
+        fill: #fff;
+      }
+
+      .gl2 {
+        fill: #dda90a;
+      }
+    </style>
+  </defs>
+  <g>
+    <g>
+      <path class="gl0" d="M1989.6,608.4c-54.6,3.2-99.7,30.6-125.5,76.2-12.7,22.5-19.4,46.5-20.9,75-3,59.7,23.3,114,70.1,144.4,50.1,32.7,123.1,32.7,173.2,0,17.3-11.2,29.3-23.1,40.4-39.5,17.3-25.9,26.5-55.6,28.8-93l.6-10.1h-163.2v51.5l52-.3c60-.5,53.8-1.8,47.7,10.7-12.8,26.3-38.3,44.7-70.8,51.2-10.9,2.2-32.9,2.2-43.4,0-37.1-7.9-63.9-32-76-68.1-7.7-22.9-8-51.2-.9-73.9,10.3-32.6,34-57.2,65-67.2,12.2-4,19.8-5,35.3-4.9,43.3.5,76.3,16.4,90,43.5,1.4,2.7,3.6,8.1,5,11.9l2.5,7h53.6l-1.3-5.7c-12.5-54.4-54.7-93.5-113.8-105.4-6.2-1.3-15.3-2.5-20.3-2.8s-11-.6-13.5-.8c-2.4,0-9.2,0-14.9.4h.3Z"/>
+      <path class="gl0" d="M3456,608.1c-73.6,7.6-128.1,55.9-142.4,126.5-1.9,9.1-2.1,12.7-2.1,33.6s.2,24.1,2.4,34.7c7.5,34.7,25.7,66.1,50.7,87.1,27.5,23,57.3,35,94.7,38.1,59.2,4.8,115.1-19.9,147.2-65,33.8-47.4,39-115.5,13-168.7-12.2-24.8-28.7-43.7-51.8-59.1-22.1-14.8-47.2-23.8-75-26.7-8.1-.9-29.5-1.1-36.7-.4h0ZM3497.9,662c33.7,7.5,58.4,26.7,72.9,56.6,20.5,42.1,12.5,94.3-19.3,126.6-19.1,19.3-43.1,29.6-72.6,31.2-18.8,1-37.8-2.7-54.1-10.4-11.5-5.5-18.5-10.3-27.2-18.5-41.3-39.1-44.7-107.3-7.7-151.2,15.5-18.3,40-31.6,65.6-35.6,7.7-1.2,34.7-.4,42.2,1.4h.2Z"/>
+      <path class="gl0" d="M4095.2,609.4c-32.1,2.8-58.9,15.6-74.4,35.3-6,7.7-12.3,20.3-14.9,29.9-2.7,10-3,37.2-.5,46.8,2.9,10.8,9.6,23.5,16.4,30.9,14.9,15.9,32,23.8,76.5,34.8,29.2,7.3,38.5,10.1,47.6,14.3,14.9,6.9,21.3,15,22.7,28.4.6,5.8-1.1,14-4.2,20.1-3.1,6-12.1,14.2-19.7,18-10,4.9-15.9,6.2-30.2,6.8-15.7.5-22.9-.8-34.3-6.4-6.7-3.3-9.4-5.3-14.7-11-9.8-10.3-13.8-19.9-15.9-38.4l-.5-4.2h-52.4l.6,9.2c3,43.3,23.9,75.5,60,92.5,37.1,17.5,92.5,13.9,125.1-8,8.5-5.7,20.4-18.2,25.8-26.9,9.4-15.3,13.1-29.5,13.1-50.1s-.3-15.6-2.3-23.4c-5.9-22.8-19.2-38.9-40.7-49.5-10.8-5.4-30-11.5-59.7-19.4-35.5-9.2-45.5-13.1-54.8-21.1-8.7-7.6-11.3-21.3-6.2-32.7,4.8-10.5,16.2-19,31.1-23,9.3-2.5,27.6-2.7,36.1-.5,21.9,5.9,35.6,22.2,37.6,45.3l.6,7.1,25.5.3,25.4.2v-6.4c0-3.5-.6-10.7-1.4-15.9-7-47.5-40.5-78.2-90.5-82.9-11.3-1.1-14.5-1.1-26.9,0h0Z"/>
+      <polygon class="gl0" points="2218.2 768.2 2218.2 923.5 2308.7 923.5 2399.2 923.5 2399.2 897.8 2399.2 872.2 2333.9 872.2 2268.6 872.2 2268.8 830.5 2269.1 788.9 2334.2 788.6 2399.2 788.5 2399.2 763.7 2399.2 738.9 2333.9 738.9 2268.6 738.9 2268.8 701.3 2269.1 663.8 2334.6 663.5 2400.1 663.3 2400.1 638.1 2400.1 612.9 2309.1 612.9 2218.2 612.9 2218.2 768.2"/>
+      <path class="gl0" d="M2469.4,768.2v155.3h51.3l.2-106.4.3-106.3,76.5,106.3,76.5,106.4h42.8v-310.6h-51.3v210.2l-2.1-2.3c-1.1-1.3-35.2-48.5-75.8-105.1l-73.8-102.8h-44.6v155.3h0Z"/>
+      <polygon class="gl0" points="2798 768.2 2798 923.5 2888.9 923.5 2979.8 923.5 2979.8 897.8 2979.8 872.2 2914.5 872.2 2849.3 872.2 2849.3 830.3 2849.3 788.5 2914.1 788.5 2978.9 788.5 2978.9 763.7 2978.9 738.9 2914.1 738.9 2849.3 738.9 2849.3 701.1 2849.3 663.3 2914.5 663.3 2979.8 663.3 2979.8 638.1 2979.8 612.9 2888.9 612.9 2798 612.9 2798 768.2"/>
+      <path class="gl0" d="M3049.1,768.2v155.3h51.3v-115.2l27.2.2,27.3.3,31.1,57.2,31.1,57.2,31.2.3h31.2c0-.4-67.8-117.7-69.9-121-1.2-1.8-1-2.1,4.8-4.7,26.4-12.3,45.8-37,51.7-65.3,10.5-51.7-16.5-98.8-65.6-114.3-15.7-5-17.6-5-87.1-5h-64.3v155.3-.3ZM3180.1,665.4c9.3,2.6,16.7,6.8,22.6,12.8,9.1,9,13,18.7,13,32.4s-3.9,23.4-13,32.5-7.7,6.5-11.4,8.3c-11.1,5.3-13.8,5.6-54.1,5.6h-36.7v-46.2c0-25.5.3-46.5.6-46.9.5-.4,17.1-.5,37.2-.4,30.8.4,37.3.6,41.9,1.9h-.1Z"/>
+      <path class="gl0" d="M3694.8,718.4c.3,105.2.3,105.6,2.3,114.3,8.6,37.4,30,66,62,82.5,34.8,17.9,78.5,18,115.1.2,31.3-15.2,53.1-44,61.8-81.7,2-8.7,2-9.1,2.3-114.8l.4-106h-52.2l-.4,101c-.3,89.4-.5,101.8-1.8,106.9-3.9,15.6-8.7,25.1-17.9,34.7-7.8,8.2-14.2,12.5-24.1,16.2-36,13.6-75.8-3.3-89.2-37.8-5.9-15.2-5.6-9.7-5.9-120.5l-.4-100.6h-52.2l.4,105.5h-.2Z"/>
+    </g>
+    <g>
+      <polygon class="gl0" points="1870 1171.3 1870 1326.6 1957.7 1326.6 2045.5 1326.6 2045.5 1301.4 2045.5 1276.2 1983.4 1276.2 1921.3 1276.2 1921.3 1146.1 1921.3 1016 1895.6 1016 1870 1016 1870 1171.3"/>
+      <polygon class="gl0" points="2090.5 1171.3 2090.5 1326.6 2113.5 1326.6 2136.4 1326.6 2136.4 1171.3 2136.4 1016 2113.5 1016 2090.5 1016 2090.5 1171.3"/>
+      <polygon class="gl0" points="2216.5 1171.3 2216.5 1326.6 2241.7 1326.6 2267 1326.6 2267.1 1262.4 2267.4 1198.3 2329.3 1198.1 2391.2 1197.9 2391.2 1173.1 2391.2 1148.4 2329.1 1148.4 2267 1148.4 2267.1 1107.6 2267.4 1066.9 2329.3 1066.6 2391.2 1066.4 2391.2 1041.2 2391.2 1016 2303.9 1016 2216.5 1016 2216.5 1171.3"/>
+      <polygon class="gl0" points="2451.5 1171.3 2451.5 1326.6 2542 1326.6 2632.4 1326.6 2632.4 1300.9 2632.4 1275.3 2567.6 1275.3 2502.8 1275.3 2502.8 1233.4 2502.8 1191.6 2567.6 1191.6 2632.4 1191.6 2632.4 1166.8 2632.4 1142.1 2567.6 1142.1 2502.8 1142.1 2502.8 1104.3 2502.8 1066.4 2568.1 1066.4 2633.3 1066.4 2633.3 1041.2 2633.3 1016 2542.4 1016 2451.5 1016 2451.5 1171.3"/>
+    </g>
+  </g>
+  <g>
+    <path class="gl2" d="M1480,963v8.6c-3.1,13.3-12.1,18.8-25.4,19.8h-378.1c-116.5,6.4-212.2,102.6-218.3,219.1v378.1c-.8,8.8-2.9,18.6-11.4,23-2.6,1.3-6,1.4-8.4,3.3h-9.5c-13.2-4.4-18-11.6-19-25.4v-378.9c-4.6-103.4-85.7-197.1-187.5-215.4-35.6-6.4-74.5-3.3-110.8-3.7-99.8-1-199.7-.6-299.6,0-30.3-.6-32.3-45.3-1.7-48.2h377.2c118.9-5.3,215.7-100.2,222.6-219.1v-379.8c.8-33.3,47.1-32.9,48.2,0v378c5.7,121.5,106.3,218.6,227.7,220.9h372c8.1,1.1,15.7,4.8,19.5,12.3l2.4,7.5h0ZM835.1,827.8c-2-.4-1.4.3-1.9,1.1-5,7.8-9,17.4-14.1,25.5-29.9,48.4-73.4,87.8-125.2,111.6-.2,1.5,1.1,1.7,2,2.3,8.1,5.7,18.6,10.4,27.2,15.9,38.9,24.5,69.7,55.4,94.3,94.3,6,9.5,10.9,19.8,17.3,29.2,24.2-49.5,60.1-91.8,106.4-121.7,10.6-6.9,22.3-12.5,32.6-19.4-60.3-28.4-110.3-78.3-138.6-138.6v-.2h0Z"/>
+    <path class="gl2" d="M641.3,737.4c5.8-11.7,6.5-25.4,8.7-38.3v-333.2c3-33.6,48.5-30.5,48.2,2.6v335c-2.6,71.4-56.7,125-127.8,128.7H231.9c-32.5-3.1-29.5-47.1,1.7-48.2h335c4.9-.2,38.3-7,38.3-10.8l-186.4-186.4c-10.5-14.1-42.3-35.9-47.3-51.7-7.6-23.8,22.4-41.1,40-23.7,69,68.2,136.5,138.1,206.2,205.3,5.5,5.3,14.2,16,19.8,19.8.7.5.8,1.2,2.2.8h0Z"/>
+    <path class="gl2" d="M606.9,1161.1c-11.8-7.2-24.6-10.1-38.3-11.2H229.3c-27.7-4.5-27.3-44.4,1.7-47.3h344.4c64.1,4.9,114.5,53.8,121.7,117.6,2.2,115.2.4,230.7,1,346-.5,33.2-44.7,35.6-48.2,2.6v-334.1c-1-5.2-4.4-36.4-9.1-37.4l-7.8,6c-67.3,66.1-132.5,134.6-200.6,199.8-11.2,10.7-26.7,32.3-44.3,26.3-17-5.8-21.6-28-8.7-40.5l220.5-219.5,6.9-8.2h0Z"/>
+    <path class="gl2" d="M989.9,342.4c13.9-2,25.5,6,27.8,20v327.2c.6,7.9,3.5,43.4,9.4,47.4,1.1.7,1.5.4,2.2-.4l226.9-226.1c23.7-19,52.3,9,34.4,32.7l-229,229.9c9.3,6.4,20.3,9.4,31.4,10.8h341.8c32.4,1.8,33.8,45.6,0,48.2h-340.1c-64.6-3.8-116.3-53.5-123.6-117.5v-353.1c1.1-9.1,9.8-17.8,18.8-19.1h0,0Z"/>
+    <path class="gl2" d="M1371.4,608.5c66.7-2.4,66.7,98.3,2.3,98.9-62.9.6-66.7-96.6-2.3-98.9Z"/>
+    <path class="gl2" d="M1140.6,379.5c64.8-6.4,72.7,92.2,10.9,97.9-67.5,6.3-74.4-91.6-10.9-97.9Z"/>
+    <path class="gl2" d="M293.3,608.5c60.1-2.1,69.4,85.7,11.4,97.5-68.3,14-81.3-95-11.4-97.5Z"/>
+    <path class="gl2" d="M518,379.5c69.5-6.8,72.7,105.2-2,97.9-54.9-5.3-56.4-92.1,2-97.9Z"/>
+    <path class="gl2" d="M286.4,1228.4c71-8.9,75.7,90.9,15.2,97-67.8,6.8-73-89.7-15.2-97Z"/>
+    <path class="gl2" d="M519.8,1456.7c61.3-4.1,71,87.1,12.4,97.7-68,12.2-80.2-93.2-12.4-97.7Z"/>
+    <path class="gl2" d="M1027.1,1197.2c-4.3,8-6.2,17.5-7.5,26.5-1,7.2-.7,12.5-1.1,19.6-5.5,108.4,2.3,220-.9,328.9-4.6,26.3-41,26.9-46.5.9-.5-103.3.6-206.7,0-310,0-10.8-1.5-21.7-.9-32.7,3.4-68.6,55.1-123.8,124.4-127.9h342.7c29.1,2.9,29.4,43.6.9,47.4h-338.4c-13.3,1.4-27.4,3.4-38.3,11.6l227.3,227.3c20.8,24.1-8.1,55.2-33.6,34.4-74.1-69.9-142.8-148.5-217.4-217.4-2-1.9-6.7-6.5-8.6-7.7s-.9-1.2-2.2-.8h0Z"/>
+    <path class="gl2" d="M1142.3,1456.7c66.4-4.5,69.6,98.4,3.2,98.8-61.8.3-66.8-94.5-3.2-98.8Z"/>
+    <path class="gl2" d="M1365.3,1228.5c69.6-8.4,75.8,90.7,14.3,97-67.4,6.8-73.7-89.8-14.3-97Z"/>
+    <path class="gl2" d="M833.2,942.6c31.8-2.5,34.1,44.3,6.6,47.9-34.9,4.7-39.1-45.4-6.6-47.9Z"/>
+  </g>
+  <g>
+    <path class="gl1" d="M4290.9,622.2h-17.7v-7h42.8v7h-17.7v47.9h-7.4v-47.9Z"/>
+    <path class="gl1" d="M4323.3,615.3h11.1l17.4,41.5h.3l17.3-41.5h11.1v54.8h-7.4v-45.1h-.2l-18.5,45.1h-5l-18.5-45.1h-.2v45.1h-7.4v-54.8Z"/>
+  </g>
+</svg>`;
+const HERO = "assets/summit-hero.jpg";
+
+const I = {
+  home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+  schedule:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2zM9 4v14M15 6v14"/>',
+  speakers:'<path d="M12 3a3 3 0 0 1 3 3v5a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/>',
+  logistics:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>',
+  breakouts:'<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/>',
+  attendees:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 3.5 6"/>',
+  questions:'<path d="M4 5h16v11H9l-5 4z"/><path d="M10 9a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3M12 14v.5"/>',
+  announcements:'<path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/>',
+  resources:'<path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4M9 12h6M9 16h6"/>',
+  events:'<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+  more:'<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+  back:'<path d="M15 5l-7 7 7 7"/>',
+  star:'<path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/>',
+  up:'<path d="M6 15l6-6 6 6"/>',
+  search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/>',
+  pin:'<path d="M12 21s7-6.3 7-12a7 7 0 0 0-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/>',
+  arrow:'<path d="M9 5l7 7-7 7"/>'
+};
+const svg = (k, s='currentColor') => `<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="${s}" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${I[k]}</svg>`;
+
+const SECTIONS = [
+  ['schedule','Schedule'],['map','Map'],['speakers','Speakers'],['logistics','Event logistics'],
+  ['breakouts','Breakouts'],['attendees','Attendees'],['questions','Questions'],
+  ['announcements','Announcements'],['resources','Resources'],['events','Upcoming events']
+];
+const TABS = [['home','Home'],['schedule','Schedule'],['map','Map'],['announcements','Updates'],['more','More']];
+
+/* ---------- sample data ---------- */
+const DAYS = [
+  {id:'thu',d:'Thu',n:'Jan 21'},{id:'fri',d:'Fri',n:'Jan 22'},{id:'sat',d:'Sat',n:'Jan 23'},{id:'sun',d:'Sun',n:'Jan 24'}
+];
+const SESSIONS = {
+  thu:[
+    {t:'3:00',p:'PM',e:'5:30',title:'Arrival and check-in',room:'Lobby',kind:'Logistics'},
+    {t:'6:00',p:'PM',e:'7:30',title:'Welcome dinner',room:'Terrace',kind:'Meal'},
+    {t:'7:45',p:'PM',e:'8:45',title:'Opening session',room:'Main Hall',kind:'Keynote',sp:['ar']},
+  ],
+  fri:[
+    {t:'7:30',p:'AM',e:'8:30',title:'Breakfast',room:'Terrace',kind:'Meal'},
+    {t:'9:00',p:'AM',e:'10:15',title:'Morning keynote',room:'Main Hall',kind:'Keynote',sp:['mo'],live:true},
+    {t:'10:30',p:'AM',e:'11:30',title:'Breakout sessions, round one',room:'See Breakouts',kind:'Breakout',go:'breakouts'},
+    {t:'12:00',p:'PM',e:'1:15',title:'Lunch with your city table',room:'Terrace',kind:'Meal'},
+    {t:'1:30',p:'PM',e:'2:30',title:'Panel: giving across generations',room:'Main Hall',kind:'Panel',sp:['jt','dl']},
+    {t:'3:00',p:'PM',e:'5:30',title:'Free afternoon',room:'Grounds',kind:'Open'},
+    {t:'6:30',p:'PM',e:'9:00',title:'Dinner and music',room:'Main Hall',kind:'Evening',sp:['sk']},
+  ],
+  sat:[
+    {t:'7:30',p:'AM',e:'8:30',title:'Breakfast',room:'Terrace',kind:'Meal'},
+    {t:'9:00',p:'AM',e:'10:00',title:'Stories from the field',room:'Main Hall',kind:'Keynote',sp:['dl']},
+    {t:'10:30',p:'AM',e:'11:30',title:'Breakout sessions, round two',room:'See Breakouts',kind:'Breakout',go:'breakouts'},
+    {t:'12:00',p:'PM',e:'1:00',title:'Lunch',room:'Terrace',kind:'Meal'},
+    {t:'6:30',p:'PM',e:'9:30',title:'Celebration dinner',room:'Main Hall',kind:'Evening'},
+  ],
+  sun:[
+    {t:'8:00',p:'AM',e:'9:00',title:'Breakfast and farewells',room:'Terrace',kind:'Meal'},
+    {t:'9:15',p:'AM',e:'10:15',title:'Closing session',room:'Main Hall',kind:'Keynote',sp:['ar']},
+    {t:'11:00',p:'AM',e:'',title:'Checkout and departures',room:'Lobby',kind:'Logistics'},
+  ]
+};
+const SPEAKERS = [
+  {id:'ar',name:'Speaker Name',init:'AR',role:'Opening and closing host',org:'Generous Life',bio:'A short bio goes here, two or three sentences on who this person is and why their voice matters at the Summit.'},
+  {id:'mo',name:'Speaker Name',init:'MO',role:'Morning keynote',org:'Partner organization',bio:'A short bio goes here, two or three sentences on who this person is and why their voice matters at the Summit.'},
+  {id:'jt',name:'Speaker Name',init:'JT',role:'Panelist',org:'Family foundation',bio:'A short bio goes here, two or three sentences on who this person is and why their voice matters at the Summit.'},
+  {id:'dl',name:'Speaker Name',init:'DL',role:'Panelist and keynote',org:'Field partner',bio:'A short bio goes here, two or three sentences on who this person is and why their voice matters at the Summit.'},
+  {id:'sk',name:'Musician Name',init:'SK',role:'Friday evening music',org:'Guest artist',bio:'A short bio goes here, two or three sentences on who this person is and why their voice matters at the Summit.'},
+];
+const BREAKOUTS = [
+  {id:'b1',r:'Round one · Fri 10:30',title:'Giving as a family',room:'Cedar Room',lead:'jt',cap:40,taken:31},
+  {id:'b2',r:'Round one · Fri 10:30',title:'Faith, work and money',room:'Library',lead:'mo',cap:30,taken:30},
+  {id:'b3',r:'Round one · Fri 10:30',title:'Seeing a project up close',room:'Garden Room',lead:'dl',cap:35,taken:18},
+  {id:'b4',r:'Round two · Sat 10:30',title:'Building a giving plan',room:'Cedar Room',lead:'ar',cap:40,taken:22},
+  {id:'b5',r:'Round two · Sat 10:30',title:'Bringing it home to your city',room:'Library',lead:'jt',cap:30,taken:12},
+];
+const CITIES = ['New York','Philadelphia','Birmingham','Tampa Bay','Huntsville','Nashville','San Antonio'];
+const ATTENDEES = [
+  ['Attendee Name','KB',0],['Attendee Name','RM',1],['Attendee Name','TS',2],['Attendee Name','LP',5],
+  ['Attendee Name','AG',3],['Attendee Name','NW',6],['Attendee Name','CF',0],['Attendee Name','EH',4],
+  ['Attendee Name','JD',5],['Attendee Name','MV',2],['Attendee Name','OB',1],['Attendee Name','PY',6]
+].map((a,i)=>({name:a[0],init:a[1],city:CITIES[a[2]],id:'a'+i}));
+let QUESTIONS = [
+  {id:'q1',text:'How do you decide where to give when every need feels urgent?',votes:24,anon:false,who:'Attendee from Nashville'},
+  {id:'q2',text:'What does it look like to bring our kids into these conversations?',votes:17,anon:true},
+  {id:'q3',text:'Can you share more about how projects are chosen and checked on?',votes:9,anon:false,who:'Attendee from New York'},
+];
+let ANNS = [
+  {id:'n1',t:'8:42 AM',title:'Morning keynote starts at 9:00 sharp',body:'Doors to the Main Hall open at 8:45. Coffee is moving to the hallway outside.',unread:true,urgent:true},
+  {id:'n2',t:'7:15 AM',title:'Breakout seats are filling',body:'Faith, work and money is now full. A few seats are open in the other two round one sessions.',unread:true},
+  {id:'n3',t:'Yesterday',title:'Thank you for a great first night',body:'Photos from the welcome dinner will be in Resources by this afternoon.',unread:false},
+  {id:'n4',t:'Yesterday',title:'Shuttle times for Friday',body:'Shuttles to the trailhead leave the lobby at 3:00 and 3:30 during the free afternoon.',unread:false},
+];
+const RESOURCES = [
+  {type:'PDF',title:'Summit guide',meta:'Schedule, map and contacts in one file'},
+  {type:'PDF',title:'Session notes: morning keynote',meta:'Shared by the speaker'},
+  {type:'LINK',title:'Give to this year\'s Summit project',meta:'Opens the Generous Life giving page'},
+  {type:'PHOTO',title:'Welcome dinner photos',meta:'Gallery, added Thursday night'},
+  {type:'PDF',title:'Reflection journal',meta:'Prompts for each session'},
+];
+const EVENTS = [
+  {m:'Feb',d:'18',city:'Nashville',title:'Spring gathering',meta:'Evening event'},
+  {m:'Mar',d:'12',city:'New York',title:'Spotlight conversation',meta:'Evening panel'},
+  {m:'Apr',d:'09',city:'Birmingham',title:'Partner dinner',meta:'Dinner and stories'},
+  {m:'May',d:'14',city:'National',title:'Women\'s Retreat',meta:'Weekend retreat'},
+];
+const ROOMS = [
+  {id:'main',name:'Main Hall',note:'Keynotes, panels and evening sessions'},
+  {id:'terrace',name:'Terrace',note:'All meals'},
+  {id:'cedar',name:'Cedar Room',note:'Breakouts'},
+  {id:'library',name:'Library',note:'Breakouts'},
+  {id:'garden',name:'Garden Room',note:'Breakouts'},
+  {id:'lobby',name:'Lobby',note:'Check-in and help desk'},
+  {id:'prayer',name:'Quiet Room',note:'Open all weekend for rest and prayer'},
+];
+
+/* ---------- state ---------- */
+const state = {route:'home', stack:[], day:'fri', starred:new Set(['fri-1','fri-4']), reserved:new Set(['b1']), voted:new Set(), room:'main', q:'', city:'All', connected:new Set()};
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const sp = id => SPEAKERS.find(s=>s.id===id);
+const unread = () => ANNS.filter(a=>a.unread).length;
+
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('on');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('on'),1800)}
+
+function go(route, push=true){
+  if(push && route!==state.route) state.stack.push(state.route);
+  state.route = route;
+  if(TABS.some(t=>t[0]===route) || route==='home') state.stack = route==='home'?[]:['home'];
+  render();
+  $('#view').scrollTop = 0;
+}
+function back(){ go(state.stack.pop() || 'home', false) }
+
+/* ---------- screens ---------- */
+const screens = {
+  home(){
+    const s = SESSIONS.fri[1], n = SESSIONS.fri[2];
+    const a = ANNS.find(x=>x.unread);
+    return `
+    <section class="hero" style="background-image:url(${HERO})">
+      <div class="eyebrow">Summit 2027 &middot; Day 2</div>
+      <h2>Good morning,<br><em>welcome back.</em></h2>
+      <p>Friday, January 22</p>
+    </section>
+    <div class="now">
+      <div class="row" style="justify-content:space-between"><span class="label">Happening now</span><span class="chip gold">Live</span></div>
+      <h3>${s.title}</h3>
+      <div class="meta">${s.room} &middot; ${s.t}&ndash;${s.e} ${s.p} &middot; ${sp(s.sp[0]).name}</div>
+      <div class="progress"><i></i></div>
+      <div class="next"><span>Up next &middot; <b>${n.title}</b></span><span>${n.t}</span></div>
+    </div>
+    <div class="pad stack" style="gap:18px">
+      ${a?`<button class="alert" data-go="announcements"><span class="bar"></span><span class="grow"><span class="label">Update &middot; ${a.t}</span><b>${a.title}</b></span>${svg('arrow')}</button>`:''}
+      <div>
+        <div class="label" style="margin-bottom:10px">Your weekend</div>
+        <div class="tiles">
+          ${SECTIONS.map(([k,l],i)=>`<button class="tile${k==='questions'?' feature':''}" data-go="${k}">${svg(k)}<span>${l}</span></button>`).join('')}
+          <button class="tile" data-go="mine">${svg('star')}<span>My schedule</span></button>
+          <button class="tile" data-go="logistics">${svg('copy')}<span>Wi-Fi</span></button>
+        </div>
+      </div>
+    </div>`;
+  },
+
+  schedule(mine=false){
+    const list = SESSIONS[state.day];
+    return `<div class="pad">
+      <h2 class="screen-title">${mine?'My schedule':'Schedule'}</h2>
+      <p class="lede">${mine?'The sessions you starred, all in one place.':'Tap the star to add a session to your schedule.'}</p>
+      <div class="seg">${DAYS.map(d=>`<button class="${d.id===state.day?'on':''}" data-day="${d.id}">${d.d}<small>${d.n}</small></button>`).join('')}</div>
+      <div class="stack">
+      ${list.map((s,i)=>{const key=state.day+'-'+i; if(mine && !state.starred.has(key)) return ''; const past=state.day==='thu'||(state.day==='fri'&&i<1);
+        return `<div class="session${s.live?' live':''}${past?' past':''}">
+          <div class="time">${s.t}<small>${s.p}</small></div>
+          <div class="card">
+            <div class="row" style="gap:6px;flex-wrap:wrap"><span class="chip${s.kind==='Keynote'?' green':''}">${s.kind}</span>${s.live?'<span class="chip gold">Live now</span>':''}</div>
+            <h4>${s.title}</h4>
+            <div class="meta">${s.room}${s.e?' &middot; until '+s.e:''}</div>
+            ${s.sp?`<div class="row" style="margin-top:10px;gap:8px">${s.sp.map(id=>`<button class="row" style="gap:6px" data-speaker="${id}"><span class="avatar" style="width:26px;height:26px;font-size:10px">${sp(id).init}</span><span class="meta">${sp(id).role}</span></button>`).join('')}</div>`:''}
+            ${s.go?`<button class="btn small ghost" style="margin-top:10px" data-go="${s.go}">Choose a breakout</button>`:''}
+            <button class="star${state.starred.has(key)?' on':''}" data-star="${key}" aria-label="Add to my schedule">${svg('star')}</button>
+          </div></div>`}).join('') || ''}
+      </div>
+      ${mine && !list.some((s,i)=>state.starred.has(state.day+'-'+i))?'<div class="empty">Nothing starred for this day yet.<br>Open the full schedule and tap a star.</div>':''}
+    </div>`;
+  },
+  mine(){ return screens.schedule(true) },
+
+  map(){
+    const r = ROOMS.find(x=>x.id===state.room);
+    const room = (id,x,y,w,h,label) => `<g class="room${state.room===id?' on':''}" data-room="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4"/><text x="${x+w/2}" y="${y+h/2+3}" text-anchor="middle">${label}</text></g>`;
+    return `<div class="pad">
+      <h2 class="screen-title">Map</h2>
+      <p class="lede">Tap a room to see what happens there.</p>
+      <div class="mapwrap">
+        <svg viewBox="0 0 340 300" role="img" aria-label="Venue floor plan">
+          <rect x="4" y="4" width="332" height="292" rx="10" fill="#F6F3F1" stroke="#D9D3CF"/>
+          ${room('main',16,16,190,120,'MAIN HALL')}
+          ${room('terrace',218,16,106,120,'TERRACE')}
+          ${room('cedar',16,148,92,70,'CEDAR')}
+          ${room('library',116,148,90,70,'LIBRARY')}
+          ${room('garden',218,148,106,70,'GARDEN')}
+          ${room('lobby',16,230,190,54,'LOBBY')}
+          ${room('prayer',218,230,106,54,'QUIET ROOM')}
+          <circle cx="111" cy="270" r="5" fill="#E0AA08" stroke="#1C1C1C" stroke-width="1.5"/>
+          <text x="122" y="273" font-size="9" font-family="sans-serif" fill="#1C1C1C">You are here</text>
+        </svg>
+      </div>
+      <div class="card" style="margin-bottom:16px;background:var(--killarney);color:var(--white)">
+        <div class="label" style="color:var(--patina)">Selected</div>
+        <div style="font-family:var(--serif);font-size:22px;margin:4px 0 2px">${r.name}</div>
+        <div style="color:#C9D6CB;font-size:14px">${r.note}</div>
+      </div>
+      <div class="stack roomlist">
+        ${ROOMS.map((x,i)=>`<button class="${state.room===x.id?'on':''}" data-room="${x.id}"><div class="card row"><span class="pin">${i+1}</span><span class="grow"><b>${x.name}</b><br><span class="meta">${x.note}</span></span></div></button>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  speakers(){
+    return `<div class="pad">
+      <h2 class="screen-title">Speakers</h2>
+      <p class="lede">The voices guiding the weekend.</p>
+      <div class="stack">
+      ${SPEAKERS.map((s,i)=>`<button data-speaker="${s.id}" style="text-align:left"><div class="card row"><span class="avatar${i%3===1?' alt':i%3===2?' gold':''}">${s.init}</span><span class="grow"><b>${s.name}</b><br><span class="meta">${s.role} &middot; ${s.org}</span></span>${svg('arrow','#5E5A57')}</div></button>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  logistics(){
+    return `<div class="pad stack" style="gap:14px">
+      <div><h2 class="screen-title">Event logistics</h2><p class="lede" style="margin:0">The practical details, all in one place.</p></div>
+      <div class="card wifi">
+        <div class="label">Wi-Fi</div>
+        <div class="row" style="justify-content:space-between;margin-top:8px">
+          <div><div class="meta" style="color:#BDB7B3">Network</div><code>GL-Summit</code></div>
+          <div><div class="meta" style="color:#BDB7B3">Password</div><code id="pw">givefreely</code></div>
+          <button class="btn gold small" data-copy="givefreely">Copy</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="label">Venue</div>
+        <div style="font-family:var(--serif);font-size:20px;margin:6px 0 2px">Venue name</div>
+        <div class="meta">Street address, City, State</div>
+        <div class="kv" style="margin-top:8px"><span>Check-in</span><b>Thu, 3:00&ndash;5:30 PM</b></div>
+        <div class="kv"><span>Checkout</span><b>Sun, by 11:00 AM</b></div>
+        <div class="kv"><span>Help desk</span><b>Lobby, 7 AM&ndash;9 PM</b></div>
+        <div class="kv"><span>Dress</span><b>Casual by day, dressy dinners</b></div>
+      </div>
+      <div class="card">
+        <div class="label">Need a hand?</div>
+        <div class="row" style="margin-top:10px"><span class="avatar alt">GL</span><span class="grow"><b>Summit team</b><br><span class="meta">Text us any time this weekend</span></span></div>
+        <div class="row" style="margin-top:12px;justify-content:space-between"><b style="font-variant-numeric:tabular-nums;font-size:17px">(555) 010-0100</b><button class="btn small ghost" data-copy="(555) 010-0100">Copy number</button></div>
+      </div>
+      <details open><summary>Getting here</summary><p>Airport, shuttle and driving directions go here, with the times the Summit shuttle runs.</p></details>
+      <details><summary>Parking</summary><p>Where to park, whether it costs anything, and valet hours.</p></details>
+      <details><summary>Meals and dietary needs</summary><p>Every meal is on the Terrace. Let the help desk know about allergies and we will pass it to the kitchen.</p></details>
+      <details><summary>Childcare</summary><p>Details for families traveling with kids go here.</p></details>
+    </div>`;
+  },
+
+  breakouts(){
+    let last='';
+    return `<div class="pad">
+      <h2 class="screen-title">Breakouts</h2>
+      <p class="lede">Pick one session in each round. Seats are limited, so reserve yours.</p>
+      <div class="stack">
+      ${BREAKOUTS.map(b=>{const mine=state.reserved.has(b.id); const taken=b.taken+(mine?1:0); const full=taken>=b.cap && !mine;
+        const head = b.r!==last ? `<div class="label" style="margin-top:${last?14:0}px">${b.r}</div>` : ''; last=b.r;
+        return head+`<div class="card">
+          <div class="row" style="justify-content:space-between"><span class="meta">${b.room}</span>${mine?'<span class="chip green">Reserved</span>':full?'<span class="chip gold">Full</span>':''}</div>
+          <h4 style="font-family:var(--serif);font-weight:400;font-size:18px;margin:6px 0 2px">${b.title}</h4>
+          <button class="meta" data-speaker="${b.lead}">Led by ${sp(b.lead).name}</button>
+          <div class="cap${full?' full':''}"><i style="width:${Math.min(100,taken/b.cap*100)}%"></i></div>
+          <div class="row" style="justify-content:space-between"><span class="meta" style="font-variant-numeric:tabular-nums">${Math.max(0,b.cap-taken)} of ${b.cap} seats open</span>
+          ${full?'<button class="btn small ghost" data-wait="'+b.id+'">Join waitlist</button>':`<button class="btn small${mine?' ghost':''}" data-reserve="${b.id}">${mine?'Cancel':'Reserve seat'}</button>`}</div>
+        </div>`}).join('')}
+      </div>
+    </div>`;
+  },
+
+  attendees(){
+    const q = state.q.toLowerCase();
+    const list = ATTENDEES.filter(a=>(state.city==='All'||a.city===state.city)&&(!q||(a.name+a.city+a.init).toLowerCase().includes(q)));
+    return `<div class="pad">
+      <h2 class="screen-title">Attendees</h2>
+      <p class="lede">Find the people you met at dinner. Guests choose whether to appear here.</p>
+      <label class="search">${svg('search','#5E5A57')}<input id="q" type="search" placeholder="Search by name or city" value="${esc(state.q)}" aria-label="Search attendees"></label>
+      <div class="seg">${['All',...CITIES].map(c=>`<button class="${state.city===c?'on':''}" data-city="${c}">${c}</button>`).join('')}</div>
+      <div class="stack" id="alist">
+      ${list.map((a,i)=>`<div class="card row"><span class="avatar${i%3===1?' alt':i%3===2?' gold':''}">${a.init}</span><span class="grow"><b>${a.name}</b><br><span class="meta">${a.city}</span></span><button class="btn small${state.connected.has(a.id)?' ghost':''}" data-connect="${a.id}">${state.connected.has(a.id)?'Saved':'Save contact'}</button></div>`).join('') || '<div class="empty">No one matches that search.</div>'}
+      </div>
+    </div>`;
+  },
+
+  questions(){
+    const sorted=[...QUESTIONS].sort((a,b)=>b.votes-a.votes);
+    return `<div class="pad stack" style="gap:16px">
+      <div><h2 class="screen-title">Questions</h2><p class="lede" style="margin:0">Ask the speakers anything. The questions with the most votes rise to the top.</p></div>
+      <div class="card" style="background:var(--killarney);color:var(--white)">
+        <div class="label" style="color:var(--patina)">Asking during</div>
+        <div style="font-family:var(--serif);font-size:19px;margin-top:4px">Morning keynote</div>
+      </div>
+      <form class="ask stack" id="askform">
+        <textarea id="askq" placeholder="Type your question" aria-label="Your question" maxlength="240"></textarea>
+        <div class="row" style="justify-content:space-between">
+          <label class="toggle"><input type="checkbox" id="anon"> Ask anonymously</label>
+          <button class="btn" type="submit">Send question</button>
+        </div>
+      </form>
+      <div class="label">${sorted.length} questions</div>
+      <div class="stack">
+      ${sorted.map(q=>`<div class="card row" style="align-items:flex-start"><button class="vote${state.voted.has(q.id)?' on':''}" data-vote="${q.id}" aria-label="Upvote">${svg('up')}${q.votes}</button><span class="grow"><span style="font-size:15px">${esc(q.text)}</span><br><span class="meta">${q.anon?'Anonymous':esc(q.who)}</span></span></div>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  announcements(){
+    return `<div class="pad">
+      <div class="row" style="justify-content:space-between;align-items:flex-end;margin-bottom:6px"><h2 class="screen-title" style="margin:0">Updates</h2>${unread()?'<button class="meta" data-readall style="text-decoration:underline">Mark all read</button>':''}</div>
+      <p class="lede">Real-time notes from the Summit team. You will also get a phone notification for anything urgent.</p>
+      <div class="stack">
+      ${ANNS.map(a=>`<div class="card ann${a.unread?' unread':''}"><div class="row" style="justify-content:space-between"><span class="label">${a.t}</span>${a.urgent?'<span class="chip gold">Time change</span>':''}</div><h4>${a.title}</h4><p>${a.body}</p></div>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  resources(){
+    return `<div class="pad">
+      <h2 class="screen-title">Resources</h2>
+      <p class="lede">Slides, notes and photos from the weekend. Everything stays here after you head home.</p>
+      <div class="stack">
+      ${RESOURCES.map(r=>`<button class="res" data-res="${esc(r.title)}"><div class="card row"><span class="fileicon">${r.type}</span><span class="grow"><b>${r.title}</b><br><span class="meta">${r.meta}</span></span>${svg('arrow','#5E5A57')}</div></button>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  events(){
+    return `<div class="pad">
+      <h2 class="screen-title">Upcoming events</h2>
+      <p class="lede">Keep the conversation going in your city.</p>
+      <div class="stack">
+      ${EVENTS.map(e=>`<div class="event row" style="align-items:stretch;gap:14px"><div class="date"><small>${e.m}</small><b>${e.d}</b></div><div class="body grow"><span class="label">${e.city}</span><h4>${e.title}</h4><div class="meta">${e.meta}</div><button class="btn small ghost" style="margin-top:10px" data-interest="${e.title}">I'm interested</button></div></div>`).join('')}
+      </div>
+    </div>`;
+  },
+
+  more(){
+    return `<div class="pad">
+      <h2 class="screen-title">Everything</h2>
+      <p class="lede">Every part of the Summit app.</p>
+      <div class="stack">
+      ${SECTIONS.map(([k,l])=>`<button data-go="${k}" style="text-align:left"><div class="card row">${svg(k,'#32553A')}<span class="grow"><b>${l}</b></span>${k==='announcements'&&unread()?`<span class="chip gold">${unread()} new</span>`:''}${svg('arrow','#5E5A57')}</div></button>`).join('')}
+      </div>
+    </div>`;
+  }
+};
+
+const TITLES = Object.fromEntries([...SECTIONS,['mine','My schedule'],['more','More'],['announcements','Updates']]);
+
+function render(){
+  const r = state.route, isHome = r==='home';
+  const tabRoute = TABS.some(t=>t[0]===r);
+  $('#appbar').innerHTML = (isHome || tabRoute)
+    ? `<div class="logo-wrap">${LOGO}</div><button class="bell" data-go="announcements" aria-label="Updates">${svg('announcements','#EAE6E4')}${unread()?`<span class="dot">${unread()}</span>`:''}</button>`
+    : `<button class="back" data-back>${svg('back','#EAE6E4')}Back</button><span class="title">${TITLES[r]||''}</span><span style="width:52px"></span>`;
+  const lw = $('#appbar .logo-wrap svg'); if(lw){lw.setAttribute('class','logo');}
+  $('#view').innerHTML = screens[r]();
+  const active = tabRoute ? r : (r==='mine'?'schedule':(isHome?'home':'more'));
+  $('#tabbar').innerHTML = TABS.map(([k,l])=>`<button class="${active===k?'on':''}" data-tab="${k}">${svg(k)}<span>${l}</span></button>`).join('');
+  document.querySelectorAll('#index button').forEach(b=>b.classList.toggle('on', b.dataset.go===r));
+  if(r==='announcements'){ setTimeout(()=>{ if(state.route==='announcements'){ANNS.forEach(a=>a.unread=false);} },2500) }
+}
+
+function openSheet(html){ $('#sheet').innerHTML = '<div class="grab"></div>'+html; $('#sheet').classList.add('on'); $('#sheetbg').classList.add('on') }
+function closeSheet(){ $('#sheet').classList.remove('on'); $('#sheetbg').classList.remove('on') }
+
+function speakerSheet(id){
+  const s = sp(id);
+  const sessions = Object.entries(SESSIONS).flatMap(([d,l])=>l.filter(x=>x.sp&&x.sp.includes(id)).map(x=>({...x,day:DAYS.find(y=>y.id===d)})));
+  const bk = BREAKOUTS.filter(b=>b.lead===id);
+  openSheet(`<div class="stack" style="gap:16px">
+    <div class="row" style="gap:16px"><span class="avatar lg">${s.init}</span><div class="grow"><div style="font-family:var(--serif);font-size:24px;line-height:1.15">${s.name}</div><div class="meta">${s.role}<br>${s.org}</div></div></div>
+    <p style="margin:0">${s.bio}</p>
+    <div class="label">Where to find them</div>
+    ${sessions.map(x=>`<div class="card"><div class="meta">${x.day.d} ${x.day.n} &middot; ${x.t} ${x.p}</div><b>${x.title}</b><div class="meta">${x.room}</div></div>`).join('')}
+    ${bk.map(b=>`<div class="card"><div class="meta">${b.r}</div><b>${b.title}</b><div class="meta">${b.room}</div></div>`).join('')}
+    <button class="btn" data-close>Done</button>
+  </div>`);
+}
+
+document.addEventListener('click', e=>{
+  const t = e.target.closest('button,[data-room]'); if(!t) return;
+  const d = t.dataset;
+  if(d.speaker){ speakerSheet(d.speaker); return }
+  if(d.close!==undefined){ closeSheet(); return }
+  if(d.go){ closeSheet(); go(d.go); return }
+  if(d.tab){ go(d.tab); return }
+  if(d.back!==undefined){ back(); return }
+  if(d.day){ state.day=d.day; render(); return }
+  if(d.star){ state.starred.has(d.star)?state.starred.delete(d.star):(state.starred.add(d.star),toast('Added to My schedule')); render(); return }
+  if(d.room){ state.room=d.room; const y=$('#view').scrollTop; render(); $('#view').scrollTop=y; return }
+  if(d.reserve){ if(state.reserved.has(d.reserve)){state.reserved.delete(d.reserve);toast('Seat released')} else {const b=BREAKOUTS.find(x=>x.id===d.reserve); BREAKOUTS.filter(x=>x.r===b.r).forEach(x=>state.reserved.delete(x.id)); state.reserved.add(d.reserve); toast('Seat reserved')} const y=$('#view').scrollTop; render(); $('#view').scrollTop=y; return }
+  if(d.wait){ toast('You are on the waitlist'); return }
+  if(d.city){ state.city=d.city; render(); return }
+  if(d.connect){ state.connected.has(d.connect)?state.connected.delete(d.connect):(state.connected.add(d.connect),toast('Contact saved')); const y=$('#view').scrollTop; render(); $('#view').scrollTop=y; return }
+  if(d.vote){ const q=QUESTIONS.find(x=>x.id===d.vote); if(state.voted.has(q.id)){state.voted.delete(q.id);q.votes--} else {state.voted.add(q.id);q.votes++} const y=$('#view').scrollTop; render(); $('#view').scrollTop=y; return }
+  if(d.readall!==undefined){ ANNS.forEach(a=>a.unread=false); render(); return }
+  if(d.copy){ const v=d.copy; (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).then(()=>toast('Copied')).catch(()=>toast(v)); return }
+  if(d.res){ toast('Opens: '+d.res); return }
+  if(d.interest){ toast('We will send you details'); return }
+});
+$('#sheetbg').addEventListener('click', closeSheet);
+document.addEventListener('submit', e=>{
+  if(e.target.id!=='askform') return;
+  e.preventDefault();
+  const v = $('#askq').value.trim(); if(!v){ toast('Type a question first'); return }
+  const id='q'+Date.now(); QUESTIONS.push({id,text:v,votes:1,anon:$('#anon').checked,who:'You'}); state.voted.add(id);
+  render(); toast('Question sent');
+});
+document.addEventListener('input', e=>{
+  if(e.target.id!=='q') return;
+  state.q = e.target.value; const pos=e.target.selectionStart;
+  render(); const i=$('#q'); i.focus(); i.setSelectionRange(pos,pos);
+});
+
+$('#index').innerHTML = SECTIONS.map(([k,l],i)=>`<li><button data-go="${k}">${l}</button></li>`).join('');
+render();
+</script>
+</body>
+</html>
