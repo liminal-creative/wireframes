@@ -1,0 +1,217 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>UWGT Impact Calculator</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;600;700&family=Palanquin:wght@300;400;500;600&display=swap">
+<style>
+  /* Layout: one control panel, then live results. No steps, nothing hidden. */
+  :root{
+    --ink:#21296B;
+    --blue:#0044B5;
+    --tint:#EAF0FB;
+    --grey:#646567;
+    --page:#FFFFFF;
+    --card:#FFFFFF;
+    --line:#D9E2F4;
+    --muted:#646567;
+    --flag:#D12626;
+    --display:"Antonio","Arial Narrow",Helvetica,sans-serif;
+    --body:"Palanquin","Segoe UI",system-ui,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#DCE4FA; --blue:#7FA6F0; --tint:#161B3A; --grey:#A3A9B8;
+      --page:#0C1026; --card:#141934; --line:#2A3360; --muted:#A3A9B8; --flag:#FF7A72;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#DCE4FA; --blue:#7FA6F0; --tint:#161B3A; --grey:#A3A9B8;
+    --page:#0C1026; --card:#141934; --line:#2A3360; --muted:#A3A9B8; --flag:#FF7A72;
+    color-scheme: dark;
+  }
+
+  body{background:var(--page);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.5;}
+  .wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px;}
+
+  .flagbar{background:var(--tint);border-bottom:1px solid var(--line);}
+  .flagbar .inner{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:10px;font-size:13px;color:var(--muted);}
+  .flagbar b{color:var(--flag);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:11px;}
+
+  .eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.14em;font-size:13px;color:var(--blue);font-weight:600;}
+  h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,6vw,56px);line-height:1.02;margin:10px 0 12px;text-wrap:balance;letter-spacing:.01em;}
+  .sub{font-size:17px;color:var(--muted);max-width:52ch;margin:0;}
+
+  .panel{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 24px 24px;}
+
+  .readout{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
+  .amount{font-family:var(--display);font-weight:700;font-size:clamp(48px,11vw,84px);line-height:1;color:var(--blue);font-variant-numeric:tabular-nums;}
+  .cadence{font-size:18px;color:var(--muted);}
+
+  .sliderrow{margin-top:20px;}
+  input[type=range]{width:100%;appearance:none;background:transparent;margin:0;}
+  input[type=range]:focus{outline:none;}
+  input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 4px rgba(0,68,181,.28);}
+  input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:999px;background:var(--tint);border:1px solid var(--line);}
+  input[type=range]::-webkit-slider-thumb{appearance:none;width:34px;height:34px;margin-top:-13px;border-radius:50%;background:var(--blue);border:3px solid var(--card);box-shadow:0 2px 8px rgba(33,41,107,.35);cursor:grab;}
+  input[type=range]:active::-webkit-slider-thumb{cursor:grabbing;}
+  input[type=range]::-moz-range-track{height:10px;border-radius:999px;background:var(--tint);border:1px solid var(--line);}
+  input[type=range]::-moz-range-thumb{width:30px;height:30px;border-radius:50%;background:var(--blue);border:3px solid var(--card);cursor:grab;}
+  .scale{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px;font-variant-numeric:tabular-nums;}
+
+  .toggle{display:inline-flex;margin-top:22px;border:1px solid var(--line);border-radius:999px;overflow:hidden;}
+  .toggle button{appearance:none;border:0;background:transparent;color:var(--muted);font-family:var(--body);font-size:15px;font-weight:500;padding:9px 20px;cursor:pointer;}
+  .toggle button[aria-pressed="true"]{background:var(--blue);color:#fff;}
+  .toggle button:focus-visible{outline:2px solid var(--blue);outline-offset:2px;}
+
+  .results{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  @media (max-width:760px){.results{grid-template-columns:1fr;}}
+  .r{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:12px;padding:20px 18px;min-width:0;display:flex;flex-direction:column;gap:6px;}
+  .r .area{font-family:var(--display);text-transform:uppercase;letter-spacing:.1em;font-size:12px;font-weight:600;color:var(--blue);}
+  .r .n{font-family:var(--display);font-weight:700;font-size:clamp(40px,8vw,58px);line-height:1;font-variant-numeric:tabular-nums;transition:transform .12s ease;}
+  .r .n.bump{transform:scale(1.045);}
+  .r .says{font-size:15px;color:var(--ink);}
+  .r .rate{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .r.pooled .n{color:var(--muted);}
+
+  .cta{margin-top:28px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .give{font-family:var(--display);font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:17px;background:var(--blue);color:#fff;border:0;border-radius:999px;padding:16px 34px;cursor:pointer;}
+  .give:focus-visible{outline:3px solid var(--ink);outline-offset:3px;}
+  .fineprint{font-size:13.5px;color:var(--muted);max-width:46ch;}
+
+  details{margin-top:34px;border-top:1px solid var(--line);padding-top:18px;}
+  summary{cursor:pointer;font-family:var(--display);text-transform:uppercase;letter-spacing:.1em;font-size:13px;font-weight:600;color:var(--blue);}
+  details ul{margin:14px 0 0;padding-left:20px;color:var(--muted);font-size:14.5px;}
+  details li{margin-bottom:9px;}
+  @media (prefers-reduced-motion: reduce){.r .n{transition:none;}}
+</style>
+
+<div class="flagbar"><div class="inner"><b>Prototype</b> &nbsp;Interaction model for review. Rates below are placeholders from the 2025 file, not the FY26 numbers.</div></div>
+
+<div class="wrap">
+  <p class="eyebrow">Impact Calculator</p>
+  <h1>See who your giving reaches.</h1>
+  <p class="sub">Drag the dial. Every number moves with it.</p>
+
+  <div class="panel">
+    <div class="readout">
+      <span class="amount" id="amt">$25</span>
+      <span class="cadence" id="cad">a month</span>
+    </div>
+
+    <div class="sliderrow">
+      <label for="dial" class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">Gift amount</label>
+      <input type="range" id="dial" min="5" max="250" step="5" value="25">
+      <div class="scale"><span id="lo">$5</span><span id="hi">$250</span></div>
+    </div>
+
+    <div class="toggle" role="group" aria-label="Giving frequency">
+      <button type="button" id="bMonthly" aria-pressed="true">Monthly</button>
+      <button type="button" id="bOnce" aria-pressed="false">One time</button>
+    </div>
+  </div>
+
+  <div class="results" id="results" aria-live="polite"></div>
+
+  <div class="cta">
+    <button class="give" type="button" id="give">Give $25 a month</button>
+    <p class="fineprint">Your gift goes to the Community Impact Fund, which supports every area below. This page shows what your amount is equal to.</p>
+  </div>
+
+  <details>
+    <summary>How is this number calculated?</summary>
+    <ul>
+      <li>Every figure comes from end-of-year reporting by United Way of the Greater Triangle grantees.</li>
+      <li>A monthly gift is multiplied by twelve, then divided by the typical cost per person in that area.</li>
+      <li>Each area uses the median cost among grantees working in it. A median describes a typical partner. An average lets one high-volume reporter set the number for everyone.</li>
+      <li>Results round down to whole people, so the number is never overstated.</li>
+      <li>Costs vary by type of work, so results are never blended across areas.</li>
+    </ul>
+  </details>
+</div>
+
+<script>
+  var AREAS = [
+    {key:"youth", name:"Youth Development", rate:93, one:"young person", many:"young people",
+     says:"with the support to do well in school and beyond."},
+    {key:"work", name:"Workforce Pathways", rate:106, one:"adult", many:"adults",
+     says:"moving into work that pays a living wage."},
+    {key:"benefits", name:"Benefits & Wraparound", rate:42, one:"neighbor", many:"neighbors",
+     says:"getting help with food, housing, or health care."}
+  ];
+
+  var monthly = true;
+  var dial = document.getElementById("dial");
+  var amtEl = document.getElementById("amt");
+  var cadEl = document.getElementById("cad");
+  var loEl = document.getElementById("lo");
+  var hiEl = document.getElementById("hi");
+  var wrap = document.getElementById("results");
+  var giveBtn = document.getElementById("give");
+  var bM = document.getElementById("bMonthly");
+  var bO = document.getElementById("bOnce");
+
+  wrap.innerHTML = AREAS.map(function(a){
+    return '<div class="r" id="card-'+a.key+'">'
+      + '<span class="area">'+a.name+'</span>'
+      + '<span class="n" id="n-'+a.key+'">0</span>'
+      + '<span class="says" id="s-'+a.key+'"></span>'
+      + '<span class="rate">About $'+a.rate+' reaches one '+a.one+' for a year.</span>'
+      + '</div>';
+  }).join("");
+
+  function money(n){ return "$" + n.toLocaleString("en-US"); }
+
+  function bump(el){
+    el.classList.add("bump");
+    setTimeout(function(){ el.classList.remove("bump"); }, 120);
+  }
+
+  function render(){
+    var amount = parseInt(dial.value, 10);
+    var annual = monthly ? amount * 12 : amount;
+
+    amtEl.textContent = money(amount);
+    cadEl.textContent = monthly ? "a month" : "one time";
+    giveBtn.textContent = monthly ? "Give " + money(amount) + " a month" : "Give " + money(amount);
+
+    AREAS.forEach(function(a){
+      var count = Math.floor(annual / a.rate);
+      var nEl = document.getElementById("n-" + a.key);
+      var sEl = document.getElementById("s-" + a.key);
+      var card = document.getElementById("card-" + a.key);
+      var prev = nEl.textContent;
+
+      if (count < 1) {
+        card.classList.add("pooled");
+        nEl.textContent = "1";
+        sEl.textContent = a.one + " " + a.says + " Your gift joins others to get there.";
+      } else {
+        card.classList.remove("pooled");
+        nEl.textContent = count.toLocaleString("en-US");
+        sEl.textContent = (count === 1 ? a.one : a.many) + " " + a.says;
+      }
+      if (nEl.textContent !== prev) bump(nEl);
+    });
+  }
+
+  function setCadence(isMonthly){
+    monthly = isMonthly;
+    bM.setAttribute("aria-pressed", String(isMonthly));
+    bO.setAttribute("aria-pressed", String(!isMonthly));
+    if (isMonthly) {
+      dial.min = 5; dial.max = 250; dial.step = 5; dial.value = 25;
+      loEl.textContent = "$5"; hiEl.textContent = "$250";
+    } else {
+      dial.min = 25; dial.max = 2500; dial.step = 25; dial.value = 250;
+      loEl.textContent = "$25"; hiEl.textContent = "$2,500";
+    }
+    render();
+  }
+
+  dial.addEventListener("input", render);
+  bM.addEventListener("click", function(){ setCadence(true); });
+  bO.addEventListener("click", function(){ setCadence(false); });
+  render();
+</script>
+
+</body></html>
